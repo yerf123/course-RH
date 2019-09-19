@@ -1,14 +1,21 @@
-# Robotics Development using Duckietown {#book:RH status=ready}
+# Hands-on Robotics Development using Duckietown {#book:RH status=ready}
 
 Excerpt: Learn the practicalities of programming robots.
 
-<minitoc levels="3"/>
+This courses teaches the practicalities of programming robots. At the end, you will
+know how to write and deploy simple *agents* on your Duckiebot.
 
+<!-- leave here for backwards compatibility reasons -->
+<div style="display:none"><div id="toc" style="display: none"></div></div>
+
+<minitoc/>
 <!---->
 
 # Preliminaries {#part:prelims status=ready}
 
 Excerpt: What you should already know, with pointers to catch up.
+
+This part gives pointers to learn basic skills in computing.
 
 <minitoc/>
 
@@ -21,12 +28,13 @@ Excerpt: Pointers to Linux learning resources.
 
 # Terminal operations {#terminal status=ready}
 
-
+Excerpt: How to get around in a terminal.
 
 <minitoc/>
 
 # Networking {#networking status=ready}
 
+Excerpt: The magic world of packets.
 
 <minitoc/>
 
@@ -162,7 +170,7 @@ Excerpt: Advanced software development
 ## Exercise: Braitenberg Duckiebots  
 
 
-# Stateful behavior
+# Stateful behavior {status=ready}
 
 
  
