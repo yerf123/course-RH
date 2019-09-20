@@ -1,9 +1,9 @@
 
-# Stateful behavior {status=ready}
+# Stateful behavior {#stateful status=ready}
 
 
  
 <minitoc/>
 
 
-## Exercise: Imitating fruit flies
+## Exercise: Imitating fruit flies {status=draft}

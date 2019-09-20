@@ -1,6 +1,6 @@
 
 
-# Behavior arbitration {status=ready}
+# Behavior arbitration {#behavior-arbitration status=ready}
 
 TODO: subsumption architecture
 
@@ -9,4 +9,4 @@ TODO: subsumption architecture
 <minitoc/>
 
 
-## Exercise 3: Combining behaviors
+## Exercise 3: Combining behaviors {status=draft}

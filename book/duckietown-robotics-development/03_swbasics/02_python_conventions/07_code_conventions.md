@@ -1,4 +1,4 @@
-# Basic Python code conventions  {#code-conventions-python}
+# Basic Python code conventions  {#code-conventions-python status=ready}
 
 Excerpt: How to write Python code that looks like Python code
 

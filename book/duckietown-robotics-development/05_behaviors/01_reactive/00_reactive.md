@@ -1,10 +1,9 @@
 
-# Braiteberg vehicles (reactive behavior) {status=ready}
+# Braiteberg vehicles (reactive behavior) {#reactive status=ready}
  
-
  
 <minitoc/>
 
 
 
-## Exercise: Braitenberg Duckiebots  
+## Exercise: Braitenberg Duckiebots  {status=draft}

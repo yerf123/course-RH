@@ -1,4 +1,5 @@
-## Wireless networking tools {#wireless-linux}
+## Wireless networking {#wireless-linux}
+
 
 ### `iwconfig` {#iwconfig status=beta}
 

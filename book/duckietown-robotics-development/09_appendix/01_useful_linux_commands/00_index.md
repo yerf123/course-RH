@@ -2,4 +2,4 @@
 
 Excerpt: A reference of useful Linux commands.
 
-<minitoc/>
+<minitoc levels="2"/>
