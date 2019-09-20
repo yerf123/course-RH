@@ -14,7 +14,8 @@ jobs:
         - run:
             name: Download resources
             command: |
-                make submodule-update
+                git submodule sync --recursive
+                git submodule update --init --recursive
 
         - run:
             name: Compile
