@@ -1,0 +1,31 @@
+bookshort: duckietown-robotics-development
+sources:
+  - book
+resources:
+  - book
+  - resources
+stylesheet: v_manual_split
+stylesheet_pdf: v_manual_blurb_ready
+
+output_crossref: duckuments-dist/duckietown-robotics-development/crossref.html
+permalink_prefix:
+ignore_ref_errors: true
+
+resolve_external: true
+likebtn: 5ae54e0d6fd08bb24f3a7fa1
+
+ --src "${src}" \
+    --bookshort "${short}" \
+    --resources "${resources}:${dist}" \
+    --stylesheet v_manual_split \
+    --stylesheet_pdf v_manual_blurb_ready \
+    --output_crossref "${dist}/${short}/crossref.html" \
+    -o "out/${short}" \
+    --permalink_prefix "${permalink_prefix}" \
+    ${options1} \
+    ${options2} \
+    ${EXTRA_MCDP_RENDER_OPTIONS} \
+    --ignore_ref_errors \
+    --resolve_external \
+    --likebtn 5ae54e0d6fd08bb24f3a7fa1 \
+    -c "config echo 1; ${cmd}"
