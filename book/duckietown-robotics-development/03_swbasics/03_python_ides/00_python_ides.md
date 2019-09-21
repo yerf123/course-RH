@@ -36,7 +36,10 @@ We suggest you install and master one of these:
 
 We have the following more detailed guides:
 
+<div status="draft" markdown="1">
 * [](#pycharm)
+</div>
+
 * [](#liclipse)
 
 

@@ -6,7 +6,7 @@ Software development in ROS takes place in a root directory call a catkin worksp
 
 See [joy_mapper](https://github.com/duckietown/Software/tree/master18/catkin_ws/src/05-teleop/joy_mapper) as an example of a ROS package. It can be launched independently with
 
-	duckiebot $ roslaunch launch/joy_mapper_test.launch
+    duckiebot $ roslaunch launch/joy_mapper_test.launch
 
 however we usually launch these nodes as part of a container.
 
