@@ -3,7 +3,7 @@
 Excerpt: Learn how to set up your Duckiebot.
 
 Major efforts were made to make sure that the setup of your Duckiebot is as comfortable as possible for you. We
- created a set of instructions that are easy to follow, in order to initialize and calibrate your Duckiebot and will lead you through them here.
+created a set of instructions for initialization and calibration through which we will guide you here.
 
 <div class='requirements' markdown='1'>
 
@@ -22,9 +22,9 @@ First of all, you have to flash your SD card. Here you have the possibility to g
 
 ## Make your Duckiebot move {#rh-make-db-move status=ready}
 
-As soon as you finished the initialization part successfully, it is time to make your Duckiebot move! Follow the instructions [here](+opmanual_duckiebot#rc-control) to find out how you can maneuver your Duckiebot using your computer keyboard. This is also the moment to check whether you did a good job at wiring your motors. If your Duckiebot does not behave as you tell him to, this is probably due to the fact that some wires are crossed.
+As soon as you finished the initialization part successfully, it is time to make your Duckiebot move. Follow the instructions [here](+opmanual_duckiebot#rc-control) to find out how you can maneuver your Duckiebot using your computer keyboard. This is also the moment to check whether you did a good job at wiring your motors. If your Duckiebot does not behave as you tell him to, this is probably due to the fact that some wires are crossed.
 
-Note: If this is the first time that you try to make your Duckiebot move, give it some time. It might take up to two minutes until the joystick pops up on your screen.  
+Note: If this is the first time that you try to make your Duckiebot move, give it some time. It might take some time until the joystick pops up on your screen.  
 
 
 ## See what your Duckiebot sees {#rh-db-camera status=ready}
@@ -34,7 +34,7 @@ There is another key component missing now: the image stream from the camera. To
 
 ## Calibration {#rh-calibration status=ready}
 
-As with every real-world system, the hardware of the Duckiebot is always a little different. During the assembly camera might have been mounted in a slightly different orientation than it was supposed to or the motors might behave different than the one of another Duckiebot. But don't worry, this is what we are going to take care of in this step.
+As with every real-world system, the hardware of the Duckiebot is always a little different. The "same" cameras or motors that you can buy off the shelf will never be exactly the same. Additionally, the camera might have been mounted in a slightly different orientation than it was supposed to. But don't worry, this is what we are going to take care of in this step.
 
 We have two calibration procedures for the Duckiebot: one for the camera and one for the motors.
 
@@ -56,8 +56,8 @@ During the camera calibration, the Duckiebot will run an automatic verification 
 
 
 
-### Wheels calibration {#rh-wheels-calibration status=ready}
+### Wheel calibration {#rh-wheels-calibration status=ready}
 
-The Duckiebot uses a [differential drive](https://docs.duckietown.org/DT19/learning_materials/out/duckiebot_modeling.html). For it to go forward in a straight line depends on the motors turning at the exact same speed. As in reality every motor is slightly different, we have to account for these imprecisions using a wheel calibration procedure. In Duckietown we are currently using a [gain-trim approach](https://docs.duckietown.org/DT19/learning_materials/out/odometry_calibration.html) for that.
+The Duckiebot uses a [differential drive](https://docs.duckietown.org/DT19/learning_materials/out/duckiebot_modeling.html). Going forward in a straight line therefore depends on the motors turning at the exact same speed. As in reality every motor is slightly different, we have to account for these imprecisions using a wheel calibration procedure. In Duckietown we are currently using a [gain-trim approach](https://docs.duckietown.org/DT19/learning_materials/out/odometry_calibration.html) for that.
 
 Follow the instructions [here](+opmanual_duckiebot#wheel-calibration) to run through the calibration procedure with your Duckiebot and help him drive straight.

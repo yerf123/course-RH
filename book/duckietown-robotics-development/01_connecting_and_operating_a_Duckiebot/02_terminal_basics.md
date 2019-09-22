@@ -33,12 +33,11 @@ If you are looking for an extensive list of commands that can be used from the t
 
 ## Using the Duckietown Shell {#using-dt-shell status=ready}
 
-The Duckietown Shell, or `dts` for short, is a pure Python, easily distributable (few dependencies
-) utility for Duckietown.
+The Duckietown Shell, or `dts` for short, is a pure Python, easily distributable (few dependencies) utility for Duckietown.
 
 The idea is that most of the functionality is implemented as Docker containers, and `dts` provides a nice interface for
- that, so that user should not type a very long docker run command line. These functionalities range from calibrating
-  your Duckiebot and running demos to building the duckumentation and submitting and evaluating for AIDO. You will
-   find the commands that you need along the way during the next steps.
+that, so that user should not type a very long docker run command line. These functionalities range from calibrating
+your Duckiebot and running demos to building the duckumentation and submitting and evaluating for AIDO. You will
+find the commands that you need along the way during the next steps.
 
 If you followed all the steps in the [laptop setup](+opmanual_duckiebot#laptop-setup), you already installed  `dts`. If not, now is the time to go back and do it.
