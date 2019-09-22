@@ -2,14 +2,19 @@
 
 Excerpt: Learn the basics of networking, to make sure you can connect to the Duckiebot.
 
-Networking is extremely vital in Duckietown. And we don't mean the networking events where duckies socialize (these are pretty fun), but the computer networks between the bots, your computers and the rest of the Duckietown equipment. These networks allow us to do some pretty cool stuff like controlling your Duckiebot from your laptop or creating a centralized observation center that combines the video streams of all watchtowers. Networking's usefulness is only comparable with its complexity. Indeed, this is often the source of most confusion and problems for Duckietown newbies. That is why we will try to clarify as many things as we can from the very beginning.
+Networking is extremely vital in Duckietown. And we don't mean the networking events where duckies socialize (these
+ are pretty fun), but rather the computer networks between the bots, your computers and the rest of the Duckietown
+  equipment. These networks allow us to do some pretty cool stuff, like controlling your Duckiebot from your laptop
+   or creating a centralized observation center that combines the video streams of all watchtowers. Networking's usefulness is only comparable with its complexity. Indeed, this is often the source of most confusion and problems for Duckietown newbies. That is why we will try to clarify as many things as we can from the very beginning.
 
 <div class='requirements' markdown='1'>
-  Requires: [Laptop setup](+opmanual_duckiebot#laptop-setup)
 
-  Requires: [Duckiebot initialization](+opmanual_duckiebot#setup_duckiebot)
-  
-  Results: Fundamental networking knowledge
+  Requires: [Laptop setup](+opmanual_duckiebot#laptop-setup).
+
+  Requires: [Duckiebot initialization](+opmanual_duckiebot#setup-duckiebot).
+
+  Results: Fundamental networking knowledge.
+
 </div>
 
 <minitoc/>

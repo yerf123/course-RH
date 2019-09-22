@@ -1,6 +1,6 @@
 # Docker basics {#docker-basics status=ready}
 
-Excerpt: The very fundamental Docker knowledge you need for Duckiebot operations
+Excerpt: The very fundamental Docker knowledge you need for Duckiebot operations.
 
 It would be nice to give a computer, any computer with an Internet connection, a short string of characters (say via a keyboard), press enter, and return to see some program running. Forget about where the program was built or what software you happened to be running at the  time (this can be checked, and we can fetch the necessary dependencies). Sounds simple, right? In fact, this is an engineering task that has taken thousands of the world’s brightest developers many decades to implement.
 
@@ -8,6 +8,7 @@ Thanks to the magic of [container technology](https://en.wikipedia.org/wiki/OS-l
 
 Docker is exactly this: a tool for portable, reproducible, and self-contained computing. Docker is used to perform operating-system-level virtualization, something often referred to as "containerization". While Docker is not the only software that does this, it is by far the most popular one.
 
+<!--suppress ALL -->
 <div class='requirements' markdown='1'>
   Requires: [Laptop setup](+opmanual_duckiebot#laptop-setup)
 
@@ -19,7 +20,9 @@ Docker is exactly this: a tool for portable, reproducible, and self-contained co
 
 ## What’s so special about containerization? {status=ready}
 
-A (Docker) _container_ is a packaging around all the software (libraries, configuration files, services, binary executable, etc) that one needs to run a program. And by all, we don’t simply mean the source code or the dependencies, we really mean all. Everything you need, from the lowest level OS components to the user interface. Hence a container does not care what flavor or release of Linux you try to run it on, it has anything it needs to work everywhere. Not to mention that Linux Docker containers can generally be also executed on macOS and Windows as well!
+A (Docker) _container_ is a packaging around all the software (libraries, configuration files, services, binary
+ executable, etc) that one needs to run a program. And by all, we don’t simply mean the source code or the
+  dependencies, we really mean all. Everything you need, from the lowest level OS components to the user interface. Hence a container does not care what flavor or release of Linux you try to run it on, it has anything it needs to work everywhere. Not to mention that Linux Docker containers can generally be also executed on Mac OS and Windows as well!
 
 _Containerization_ is a process that allows partitioning the hardware and the core software (the kernel) of an operating systems in such a way that different containers can co-exist on the same system independently from one-another. Programs running in such a container have access only to the resources they are allow to and are completely independent of libraries and configurations of the other containers and the host machine. Because of this feature, Docker containers are extremely portable.
 

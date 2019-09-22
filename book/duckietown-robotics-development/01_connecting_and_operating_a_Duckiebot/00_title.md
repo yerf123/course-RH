@@ -1,4 +1,4 @@
-# Connecting and operating a Duckiebot {#part:connecting-operating-duckiebot status=ready}
+# [RH1] Connecting and operating a Duckiebot {#part:connecting-operating-duckiebot status=ready}
 
 Excerpt: The basic knowledge and skills you need to operate a Duckiebot.
 

@@ -3,7 +3,6 @@
 Excerpt: Learn how to operate the built-in functionality of the Duckiebot.
 
 
-
 <minitoc/>
 
 <!-- !!! UPDATE THIS !!! -->

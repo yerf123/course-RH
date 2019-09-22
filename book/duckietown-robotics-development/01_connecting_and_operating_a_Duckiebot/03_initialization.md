@@ -2,13 +2,14 @@
 
 Excerpt: Learn how to set up your Duckiebot.
 
-Major efforts were made to make sure that the setup of your Duckiebot is as comfortable as possible for you. We created a set of instructions that are easy to follow in order to initialize and calibrate your Duckiebot and will lead you through them here.
+Major efforts were made to make sure that the setup of your Duckiebot is as comfortable as possible for you. We
+ created a set of instructions that are easy to follow, in order to initialize and calibrate your Duckiebot and will lead you through them here.
 
 <div class='requirements' markdown='1'>
 
-Requires: an [assembled Duckiebot](#rh-assembly)
+Requires: an [assembled Duckiebot](#rh-assembly).
 
-Results: A Duckiebot that is ready to operate in Duckietown
+Results: A Duckiebot that is ready to operate in Duckietown.
 
 </div>
 
@@ -28,7 +29,7 @@ Note: If this is the first time that you try to make your Duckiebot move, give i
 
 ## See what your Duckiebot sees {#rh-db-camera status=ready}
 
-There is another key component missing now: the image stream from the camera. To find its way around in the city, a Duckiebot needs to be aware of what is going on around him and where he is allowed to drive and where not. To see the image stream from your Duckiebot, follow the instructions [here](+opmanual_duckiebot#read-camera-data ).
+There is another key component missing now: the image stream from the camera. To find its way around in the city, a Duckiebot needs to be aware of what is going on around him and where he is allowed to drive and where not. To see the image stream from your Duckiebot, follow the instructions [here](+opmanual_duckiebot#read-camera-data).
 
 
 ## Calibration {#rh-calibration status=ready}
@@ -48,11 +49,11 @@ Follow the instructions [here](+opmanual_duckiebot#camera-calib) to calibrate th
 
 For more detailed background information check out [this link](https://github.com/duckietown/lectures/blob/master/1_ideal/25_computer_vision/cv_calibration.pdf).
 
-<div class="exercise">
+#### Calibration {#exercise:calibration}
 
-During the camera calibration, the Duckiebot will run an automatic verification on the camera calibration. Hand us in a picture of your camera calibration verification [here]()
+During the camera calibration, the Duckiebot will run an automatic verification on the camera calibration. Hand us in
+ a picture of your camera calibration verification [here XXX](XXX).
 
-</div>
 
 
 ### Wheels calibration {#rh-wheels-calibration status=ready}

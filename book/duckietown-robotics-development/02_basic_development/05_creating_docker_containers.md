@@ -7,7 +7,7 @@ We spent a lot of time looking at how to use Docker containers and the image tha
 <div class='requirements' markdown='1'>
   Requires: [Laptop setup](+opmanual_duckiebot#laptop-setup)
 
-  Requires: [Duckiebot initialization](+opmanual_duckiebot#setup_duckiebot)
+  Requires: [Duckiebot initialization](+opmanual_duckiebot#setup-duckiebot)
 
   Requires: [Docker basics](#docker-basics)
 
