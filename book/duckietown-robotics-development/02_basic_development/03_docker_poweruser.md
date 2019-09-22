@@ -21,15 +21,15 @@ Docker provides a few ways to extract and import files from and to a container. 
 
 You can use `docker run` with the `-v host_dir:container_dir` option. Here `-v` is a shortcut for `--volume`. This specifies that `container_dir` in the container will be replaced with `host_dir` from your computer. Give it a try:
 
-<div id="exercise:ex-docker-volumemounting" class="exercise">
+#### Docker volume mounting {#exercise:ex-docker-volumemounting}
 
-  Run a new Ubuntu container where you mount you home directory in the container’s home directory:
+Run a new Ubuntu container where you mount you home directory in the container’s home directory:
 
-      laptop $ docker run -it -v ~:/home ubuntu
+    laptop $ docker run -it -v ~:/home ubuntu
 
-  In bash `~` is a shortcut for your home directory (`/home/your_username`). Now if you check which files are in the container’s home directory by running `ls /home` you’d see the files you have on your host machine. Try to change one of them (hopefully one not that important file) or to create a new one. Check in your host home folder if the changes appear there as well. Now do the opposite: make a change in your host and observe if there’s a corresponding change in the container.
+In bash `~` is a shortcut for your home directory (`/home/your_username`). Now if you check which files are in the container’s home directory by running `ls /home` you’d see the files you have on your host machine. Try to change one of them (hopefully one not that important file) or to create a new one. Check in your host home folder if the changes appear there as well. Now do the opposite: make a change in your host and observe if there’s a corresponding change in the container.
 
-</div>  
+<end/>
 
 
 ## Docker and networking {status=ready}

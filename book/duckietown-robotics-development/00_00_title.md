@@ -1,12 +1,5 @@
 # Hands-on Robotics Development using Duckietown {#book:RH status=ready}
 
-<!-- about the "Excerpt:" paragraph: in the future this will be
-    the short description of the book on the site. Does not get
-    shown in the book itself.
-. -->
-
-Excerpt: Learn the the foundations of programming robots.
-
 
 <div id="logo-container">
     <img alt="logo duckietown" id="logo" src="Mack-and-duckietown.png"/>
