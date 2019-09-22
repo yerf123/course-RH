@@ -1,11 +1,11 @@
 # Hands-on Robotics Development using Duckietown {#book:RH status=ready}
 
-<!-- about the "Excerpt:" paragraph: in the future this will be 
-    the short description of the book on the site. Does not get 
+<!-- about the "Excerpt:" paragraph: in the future this will be
+    the short description of the book on the site. Does not get
     shown in the book itself.
 . -->
 
-Excerpt: Learn the practicalities of programming robots.
+Excerpt: Learn the the foundations of programming robots.
 
 
 <div id="logo-container">
@@ -18,11 +18,8 @@ Excerpt: Learn the practicalities of programming robots.
         margin-top: 4em;
         margin-bottom: 4em;
     }
-    
+
     #logo-container {
     text-align: center;
     }
 </style>
-
-
-
