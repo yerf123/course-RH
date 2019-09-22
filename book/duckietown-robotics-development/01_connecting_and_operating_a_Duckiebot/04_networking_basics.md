@@ -33,42 +33,49 @@ The [MAC address](https://en.wikipedia.org/wiki/MAC_address) is related to your 
 
 While MAC addresses have the benefit of stability, they are very clumsy to work with, imagine that every time you want to send a letter to your friend you need to write down their citizen number. And also imagine you are the mailman: it is very different to deliver mail if you don’t know where the person lives. Computers use IP addresses to handle these problems.
 
-The [IP address](https://en.wikipedia.org/wiki/IP_address) of a device is relative to the network it lives in. It is a sequence of numbers that are uniquely mapped to devices inside the network. It is coded on 32 bits. Most home networks use the range of IP from `192.168.1.1` to `192.168.1.255`, so you may have seen the numbers before.  The structure of the IP address shows the hierarchical nature of the network architecture. This address will change as soon as you change network, and it is assigned by the network administrator. Typically this is handled by a [DHCP](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol) server which, in most home networks is part of the router. In a local network, all addresses use the same subnetwork, which means that the first 24 bits of it are the same. If my IP is `192.168.1.23`, then my subnetwork is `192.168.1.XXX`. This makes it easy to determine which devices are on the same local network as me, as then the router can directly deliver my messages. If I am trying to connect to a device outside my local network (e.g. on the Internet), then the router will need to find a way to deliver the message to it.
+The [IP address](https://en.wikipedia.org/wiki/IP_address) of a device is relative to the network it lives in. It is
+ a sequence of numbers that are uniquely mapped to devices inside the network. It is coded on 32 bits. Most home
+  networks use the range of IP from `192.168.1.1` to `192.168.1.255`, so you may have seen the numbers before.  The
+   structure of the IP address shows the hierarchical nature of the network architecture. This address will change as
+    soon as you change network, and it is assigned by the network administrator. Typically this is handled by a [DHCP
+    ](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol) server which, in most home networks is part
+     of the router. In a local network, all addresses use the same subnetwork, which means that the first 24 bits of it are the same. If my IP is `192.168.1.23`, then my subnetwork is `192.168.1.![xyz]`. This makes it easy to determine which devices are on the same local network as me, as then the router can directly deliver my messages. If I am trying to connect to a device outside my local network (e.g. on the Internet), then the router will need to find a way to deliver the message to it.
 
 This concept is actually quite important. Your router will give you the address of any device on your local network, such that you can connect to it, but does not work for resources on the Internet, for example, `docs.duckietown.org`. Therefore, instead, it acts as an intermediary between your device and the Internet. The technical term for that is gateway. The router will mask any request that comes from you as if it comes from the router itself, and once it gets a reply from the remote server, it forwards that back to your device.
 
 Even though using IP addresses if very convenient for computers, humans do not handle them that well. They change from time to time and are hard to memorize. Instead, we would much more prefer to name our devices with nice memorable names such as `quackabot` or `duckiecar`. These names are called hostnames and you should have picked one for your Duckiebot when you initialized it. In Duckietown, we mostly use the hostnames for connecting to devices. However, the ability to find a device by hostname is non-standard and requires a protocol called _multicast DNS_ ([mDNS](https://en.wikipedia.org/wiki/Multicast_DNS)). This protocol works on most standard home or office networks but is blocked on big enterprise networks like the ones in universities. If you have issues connecting to your Duckiebot, that is the most likely reason and you should first check with your network provider if mDNS is indeed blocked.
 
-<div id="exercise:ex-ifconfig" class="exercise">
+#### Network utils {#exercise:ex-ifconfig}
 
-  Now we will see some tools that can help you understand the network on which you are.
+Now we will see some tools that can help you understand the network on which you are.
 
-  There is nothing more simple than finding your hostname: simply type `hostname` in a terminal. Now,  make sure you are connected to a network. We will use the `ifconfig` command to find some properties of this network. Open a terminal and type the command `ifconfig`. You might be missing the package that provides this command. If that is the case, install it and try again.
+There is nothing more simple than finding your hostname: simply type `hostname` in a terminal. Now,  make sure you are connected to a network. We will use the `ifconfig` command to find some properties of this network. Open a terminal and type the command `ifconfig`. You might be missing the package that provides this command. If that is the case, install it and try again.
 
-  The `ifconfig` command outputs a few paragraphs, one for each network interface. You probably have one called something like `wlan0` (your wireless interface) and another one called `eth0` (your Ethernet interface). Look at the one through which you are connected at the moment. After the keyword `inet` you should see your IP address and after the keyword `ether` or `HWadress` you should get the MAC address of this interface.
+The `ifconfig` command outputs a few paragraphs, one for each network interface. You probably have one called something like `wlan0` (your wireless interface) and another one called `eth0` (your Ethernet interface). Look at the one through which you are connected at the moment. After the keyword `inet` you should see your IP address and after the keyword `ether` or `HWadress` you should get the MAC address of this interface.
 
-  Can you determine what is your your sub-network? How many devices can you put on this sub-network?
+Can you determine what is your your sub-network? How many devices can you put on this sub-network?
 
-</div>
+<end/>
 
 Now that you know what your network is, it is time to explore the devices on it. There are many ways to do this. If you know about a device that should be connected, like your Duckiebot, then you can directly try to find it. To do so, you can try to ping it. This will just "poke" the device to see if it is on the network and responsive. You can ping by IP address and a hostname. Pinging by IP address always works if a device is connected to the network. Pinging by hostname requries that mDNS is enabled, therefore if that fails it could mean that either your device is not connected, or that the mDNS traffic is being blocked on your network.
 
-<div id="exercise:ex-ping" class="exercise">
-  Open a terminal. Run `ping ![hostname]`, where `hostname` is your Duckiebot’s hostname. Does it work? What is the output? Now try `ping ![hostname].local` instead. Does this work? For the router to find a device with its hostname, it needs to know that the hostname is in the local network, not somewhere else on internet. In contrast, try to ping a server outside of the local network: `ping google.com`.
+#### Ping {#exercise:ex-ping}
 
-  Now, when you pinged your Duckiebot, did you notice that there was an IP address in the output? Is it yours? No! It is the IP of the Duckiebot! You can now use this IP address and try pinging with it. Do you need to add the `.local` this time? Can you figure out why?
-</div>
+Open a terminal. Run `ping ![hostname]`, where `hostname` is your Duckiebot’s hostname. Does it work? What is the output? Now try `ping ![hostname].local` instead. Does this work? For the router to find a device with its hostname, it needs to know that the hostname is in the local network, not somewhere else on internet. In contrast, try to ping a server outside of the local network: `ping google.com`.
+
+Now, when you pinged your Duckiebot, did you notice that there was an IP address in the output? Is it yours? No! It is the IP of the Duckiebot! You can now use this IP address and try pinging with it. Do you need to add the `.local` this time? Can you figure out why?
+
 
 This part will be very important for a lot of the things you will do in Duckietown. When a command involving your Duckiebot doesn't work, the first thing to try is to ping it and make sure it is still accessible.
 
+#### NMap {#exercise:ex-nmap}
 
-<div id="exercise:ex-nmap" class="exercise">
-  We can now investigate what is on our network. For that we will use one of the many network mapping tools that exist out there. Keep in mind that depending on the network and the devices on it, you might not be able to see every device and every parameter.
+We can now investigate what is on our network. For that we will use one of the many network mapping tools that exist out there. Keep in mind that depending on the network and the devices on it, you might not be able to see every device and every parameter.
 
-  Since you know your IP address, you also know your sub-network. Using the tool `nmap` , we are going to search the whole sub-network. Try to run `nmap -sP ![YOUR IP]/24` in a terminal. The `/24` part tells `nmap` to keep the 24 first bits the same in its search. If you don’t put it, then nmap will search the complete space of address (which are the monstrous 2^32 addresses).
+Since you know your IP address, you also know your sub-network. Using the tool `nmap` , we are going to search the whole sub-network. Try to run `nmap -sP ![YOUR IP]/24` in a terminal. The `/24` part tells `nmap` to keep the 24 first bits the same in its search. If you don’t put it, then nmap will search the complete space of address (which are the monstrous 2^32 addresses).
 
-  The output should give you the list of all devices connected to your network, with their IP addresses and most of the time their hostnames. This way, you found your hostname and its IP, as well as other potentially present Duckiebots or computers.
-</div>
+The output should give you the list of all devices connected to your network, with their IP addresses and most of the time their hostnames. This way, you found your hostname and its IP, as well as other potentially present Duckiebots or computers.
+
 
 
 
@@ -76,24 +83,26 @@ This part will be very important for a lot of the things you will do in Duckieto
 
 Now that we know what our network is and how it works, you can try to use it to gain access to your Duckiebot! The industry standard way of connecting to remote devices is SSH (Secure SHell). Then name describes it quite well: just in the same way that you can run shell commands on your computer in the terminal you can run shell commands, in a secure way, on a remote device. In this case, the remote device will be your Duckiebot.
 
-<div id="exercise:ex-ssh" class="exercise">
 
-  Let’s connect to your Duckiebot via SSH. Open a terminal and type `ssh ![username]@![hostname].local`. The username and hostname should be the ones you supplied when you flashed your card. If you didn’t set a username, then it should be the default value of `duckie`. If you are prompted to enter a password, again use the one you set when flashing, or if you didn’t use the default `quackquack` password.
+#### SSH {#exercise:ex-ssh}
 
-  Now your terminal is not in your computer anymore but on the Duckiebot. Did the text before the place where you can enter you command change? Why? What do these things there mean?
 
-  You should now be in a shell in the Dduckiebot. Try to move around with terminal commands like `cd` and `ls`, as explained in the terminal basics. Verify that these are not your directories and files, and are actually the ones on your robot.
+Let’s connect to your Duckiebot via SSH. Open a terminal and type `ssh ![username]@![hostname].local`. The username and hostname should be the ones you supplied when you flashed your card. If you didn’t set a username, then it should be the default value of `duckie`. If you are prompted to enter a password, again use the one you set when flashing, or if you didn’t use the default `quackquack` password.
 
-  Repeating the steps from one of the previous exercises, try to find the MAC address of your Duckiebot.
+Now your terminal is not in your computer anymore but on the Duckiebot. Did the text before the place where you can enter you command change? Why? What do these things there mean?
 
-  One you are ready, you can exit the session on the Duckiebot and return to your computer by simply typing `exit` or by pressing `CTRL+D`.
+You should now be in a shell in the Dduckiebot. Try to move around with terminal commands like `cd` and `ls`, as explained in the terminal basics. Verify that these are not your directories and files, and are actually the ones on your robot.
 
-</div>
+Repeating the steps from one of the previous exercises, try to find the MAC address of your Duckiebot.
+
+One you are ready, you can exit the session on the Duckiebot and return to your computer by simply typing `exit` or by pressing `CTRL+D`.
+
+<end/>
 
 You can connect to your bot without having to type a password (maybe that was already the case). This is done by using SSH keys You don't know this yet, but when you flashed the SD card on your computer, it added an SSH key to your computer and to the Duckiebot. With this, the Duckiebot recognizes your computer and won’t ask for a password. On your computer, the key is in `~/.ssh`, and it is called `DT18_key_00`.
 
-<div id="exercise:ex-ssh-keys" class="exercise">
+####  SSH keys {#exercise:ex-ssh-keys}
 
-  Open a new terminal and navigate to `~/.ssh` and open the file named `config`. What is in there? It is a list of know agents mapped with the key to use. When you run `ssh ![hostname]` ssh will directly use the key and the provided Linux username (`duckie` by default).
+Open a new terminal and navigate to `~/.ssh` and open the file named `config`. What is in there? It is a list of know agents mapped with the key to use. When you run `ssh ![hostname]` ssh will directly use the key and the provided Linux username (`duckie` by default).
 
-</div>
+<end/>
