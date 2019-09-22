@@ -1,12 +1,12 @@
-#Duckumentation Assembly [MH] {#rh-assembly status=ready}
+# Assembly duckumentation {#rh-assembly status=ready}
 
 Excerpt: Learn how to assemble a Duckiebot and Duckietown.
 
-We have prepared extremely detailed instructions on how to build your Duckiebot, and, if you need, a whole Duckietown! Here, we will guide you to the relevant parts of the book that contain the specific instructions. Once you are done, you can continue with the next module.
+We have prepared detailed instructions on how to build your Duckiebot, and, if you need, a whole Duckietown! Here, we will guide you to the relevant parts of the book that contain the specific instructions. Once you are done, you can continue with the next module.
 
 <div class='requirements' markdown='1'>
 
-  Requires: [Laptop setup](+opmanual_duckiebot#laptop-setup)
+  Requires: [Hardware](https://get.duckietown.org/)
 
   Results: Know how to build Duckiebots and Duckietowns.
 
@@ -24,15 +24,15 @@ The content of the Duckiebox, as well as a detailed set of instructions, can be 
 The assembly instructions as well as the hardware preliminaries are part of the extensive documentation on Duckietown, which we refer to as the ["Duckumentation"](+opmanual_duckiebot#opmanual_duckiebot). The Duckumentation is an
   open-source documentation
   that
-  explains everything you need in order to find your ways around the Duckietown Universe. 
-  
+  explains everything you need in order to find your ways around the Duckietown Universe.
+
  If you cannot find the answer to a specific question you have, you can join our [Slack Workspace][slack]. There you
   can ask the community about anything. When you sign up, please make sure to add your
   affiliation. It is always a pleasure to see Duckietown spreading around the world, and we are curious to find out
    more about our new members.
 
 [slack]: https://duckietown.slack.com/
- 
+
 If you run into any issues during the assembly, there are different ways to find help. First, you can look at the FAQ
  sections that are on some pages of the Duckumentation. If this does not help you and you need further assistance, let us know via [Slack](https://duckietown.slack.com/).
 

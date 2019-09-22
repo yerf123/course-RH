@@ -1,4 +1,4 @@
-# Duckiebot Setup [MH] {#rh-db-setup status=ready}
+# Duckiebot Setup {#rh-db-setup status=ready}
 
 Excerpt: Learn how to set up your Duckiebot.
 

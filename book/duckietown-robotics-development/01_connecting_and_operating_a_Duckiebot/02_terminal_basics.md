@@ -1,4 +1,4 @@
-# Terminal basics [MH] {#terminal-basics status=ready}
+# Terminal basics {#terminal-basics status=ready}
 
 Excerpt: Learn how to use a terminal.
 
@@ -41,4 +41,4 @@ The idea is that most of the functionality is implemented as Docker containers, 
   your Duckiebot and running demos to building the duckumentation and submitting and evaluating for AIDO. You will
    find the commands that you need along the way during the next steps.
 
-If you followed all the steps in the [laptop setup](+opmanual_duckiebot#laptop-setup), you already installed  `dts`. If not, now is the time to go back and do it. 
+If you followed all the steps in the [laptop setup](+opmanual_duckiebot#laptop-setup), you already installed  `dts`. If not, now is the time to go back and do it.
