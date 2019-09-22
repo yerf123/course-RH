@@ -1,1 +1,0 @@
-## Troubleshooting {#dt-shell-troubleshooting}
