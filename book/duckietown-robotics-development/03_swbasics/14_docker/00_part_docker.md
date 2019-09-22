@@ -1,3 +1,3 @@
-# Basic Docker development {#part:docker-devel status=ready}
+# Basic Docker development {#part:docker-devel status=beta}
 
 <minitoc/>
