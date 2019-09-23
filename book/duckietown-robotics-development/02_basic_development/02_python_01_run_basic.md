@@ -62,5 +62,6 @@ Deactivating services broadcast...
 Done!
 ```
 
+
 Congratulations! You just built and run your own Duckietown-compliant Docker image.
 

@@ -46,6 +46,8 @@ Hello from MY_ROBOT!
 
 Deactivating services broadcast...
 Done!
+```
+
 
 Congratulations! You just built and run your first Duckietown-compliant and Duckiebot-compatible Docker image.
-```
+

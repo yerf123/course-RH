@@ -57,7 +57,7 @@ Note: Replace `YOUR_NAME` in the link above with your GitHub username.
 The repository contains already everything you need to create a Duckietown-compliant Docker image for your program. The only thing we need to change before we can build an image from this repository is the repository name in the file Dockerfile. Open it using the text editor you prefer and change the first line from:
 
 ```Dockerfile
-ARG REPO_NAME="<REPO_NAME_HERE>"
+ARG REPO_NAME="![REPO_NAME_HERE]"
 ```
 
 to
