@@ -1,4 +1,4 @@
-# AIDO submissions [AmC] {#aido-submissions status=ready}
+# AIDO submissions {#aido-submissions status=ready}
 
 Excerpt: Learn how to use the AIDO submission system.
 
