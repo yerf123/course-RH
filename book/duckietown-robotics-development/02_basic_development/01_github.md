@@ -1,4 +1,4 @@
-# Git and GitHub [AmC] {#git-github status=ready}
+# Git and GitHub {#git-github status=ready}
 
 Excerpt: Learn how to use Git and Github.
 
