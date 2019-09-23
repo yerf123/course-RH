@@ -49,11 +49,11 @@ Even though using IP addresses if very convenient for computers, humans do not h
 
 Now we will see some tools that can help you understand the network on which you are.
 
-There is nothing more simple than finding your hostname: simply type `hostname` in a terminal. Now,  make sure you are connected to a network. We will use the `ifconfig` command to find some properties of this network. Open a terminal and type the command `ifconfig`. You might be missing the package that provides this command. If that is the case, install it and try again.
+There is nothing simpler than finding your hostname: simply type `hostname` in a terminal. Now,  make sure you are connected to a network. We will use the `ifconfig` command to find some properties of this network. Open a terminal and type the command `ifconfig`. You might be missing the package that provides this command. If that is the case, install it and try again.
 
 The `ifconfig` command outputs a few paragraphs, one for each network interface. You probably have one called something like `wlan0` (your wireless interface) and another one called `eth0` (your Ethernet interface). Look at the one through which you are connected at the moment. After the keyword `inet` you should see your IP address and after the keyword `ether` or `HWadress` you should get the MAC address of this interface.
 
-Can you determine what is your your sub-network? How many devices can you put on this sub-network?
+Can you determine what is your sub-network? How many devices can you put on this sub-network?
 
 <end/>
 
@@ -91,11 +91,11 @@ Let’s connect to your Duckiebot via SSH. Open a terminal and type `ssh ![usern
 
 Now your terminal is not in your computer anymore but on the Duckiebot. Did the text before the place where you can enter you command change? Why? What do these things there mean?
 
-You should now be in a shell in the Dduckiebot. Try to move around with terminal commands like `cd` and `ls`, as explained in the terminal basics. Verify that these are not your directories and files, and are actually the ones on your robot.
+You should now be in a shell in the Duckiebot. Try to move around with terminal commands like `cd` and `ls`, as explained in the terminal basics. Verify that these are not your directories and files, and are actually the ones on your robot.
 
 Repeating the steps from one of the previous exercises, try to find the MAC address of your Duckiebot.
 
-One you are ready, you can exit the session on the Duckiebot and return to your computer by simply typing `exit` or by pressing `CTRL+D`.
+Once you are ready, you can exit the session on the Duckiebot and return to your computer by simply typing `exit` or by pressing `CTRL+D`.
 
 <end/>
 
