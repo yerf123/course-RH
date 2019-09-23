@@ -5,13 +5,17 @@ Excerpt: Learn how to use Git and Github.
 Working on software in a group is great for development, but it automatically brings many pitfalls and issues.
 How to handle code that has been modified at the same time by two members of the group? How to keep an eye on what other members write in the code? How to keep enough history of the code to be able to go back to a stable version when something bad was added? How to do that when a few hundred people work on the same code and not go crazy. The answer is simple: **code versioning tools**. These tools allow communities to swiftly handle these issues. The most used one, and the one we will use, is **git**.
 
-<minitoc/>
 
-<!-- !!! UPDATE THIS !!! -->
 <div class='requirements' markdown='1'>
+
   Requires: [Laptop setup](+opmanual_duckiebot#laptop-setup)
+  
   Results: Know how to extensively use a code versioning tools, git
+  
 </div>
+
+
+<minitoc/>
 
 ## Learning git {status=ready}
 
