@@ -57,7 +57,7 @@ For more detailed background information check out [this link](https://github.co
 
 During the camera calibration, the Duckiebot will run an automatic verification on the camera calibration. Check if the projection of the street on the actual picture fits. If it doesn't you have to redo the extrinsic calibration.
 
-
+<end/>
 
 ### Wheel calibration {#rh-wheels-calibration status=ready}
 
