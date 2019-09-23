@@ -41,7 +41,7 @@ Now that you have a copy of the template, you can create new repositories based 
 You will see a page that looks like the following:
 
 <figure>
-  <img style="width:10em" src="images/create_a_repo.png"/>
+  <img style="width:40em" src="images/create_a_repo.png"/>
 </figure>
 
 In the section *Repository template*, select *`![YOUR_NAME]/template-basic`*. Pick a name for your repository (say `my
@@ -74,7 +74,7 @@ If you correctly installed Docker and `dts`, you should see a long log that ends
  the following:
 
 <figure id="fig:build">
-  <img alt="build" style="width:10em" src="images/dts_devel_build.png"/>
+  <img alt="build" style="width:40em" src="images/dts_devel_build.png"/>
 </figure>
 
 You can now run your container by executing the following command.
