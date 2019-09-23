@@ -19,7 +19,7 @@ Results: A Duckiebot that is ready to operate in Duckietown.
 
 First of all, you have to flash your SD card. Here you have the possibility to give your duckiebot a name and choose what network to connect to. We experienced people having issues when they called their Duckiebot `duckiebot`, so make sure to find a creative name that is different from that.
 
-Note: For ETH students taking the AMOD class 2019: When flashing your SD card, use the option `--wifi duckietown5:quackquack` to ensure your Duckiebot connects to the network that we set up for you. 
+Note: For ETH students taking the AMOD class 2019: When flashing your SD card, use the option `--wifi duckietown5:quackquack` to ensure your Duckiebot connects to the network that we set up for you.
 
 Follow the initialization instructions [here](+opmanual_duckiebot#setup-duckiebot).
 
@@ -55,8 +55,7 @@ For more detailed background information check out [this link](https://github.co
 
 #### Calibration {#exercise:calibration}
 
-During the camera calibration, the Duckiebot will run an automatic verification on the camera calibration. Hand us in
- a picture of your camera calibration verification [here XXX](XXX).
+During the camera calibration, the Duckiebot will run an automatic verification on the camera calibration. Check if the projection of the street on the actual picture fits. If it doesn't you have to redo the extrinsic calibration.
 
 
 
