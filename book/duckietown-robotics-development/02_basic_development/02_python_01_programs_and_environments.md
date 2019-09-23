@@ -66,7 +66,11 @@ to
 ARG REPO_NAME="my-program"
 ```
 
-Save the changes. We can now build the image, even though there is not going to be much going on inside it until we place our code in it. To do that, open a terminal and move to the directory created by the `git clone` instruction above. Run the following command:
+Save the changes. We can now build the image, even though there is not going to be much going on inside it until we place our code in it. To do that, we need to enable development features in the duckietown-shell by running the following in a terminal:
+
+    laptop $ dts install devel
+
+Now, in a terminal, move to the directory created by the `git clone` instruction above and run the following command:
 
     laptop $ dts devel build -f --arch amd64
 
