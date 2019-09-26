@@ -64,7 +64,7 @@ Now that you know what your network is, it is time to explore the devices on it.
 
 #### Ping {#exercise:ex-ping}
 
-Open a terminal. Run `ping ![hostname]`, where `hostname` is your Duckiebot’s hostname. Does it work? What is the output? Now try `ping ![hostname].local` instead. Does this work? For the router to find a device with its hostname, it needs to know that the hostname is in the local network, not somewhere else on internet. In contrast, try to ping a server outside of the local network: `ping google.com`.
+Open a terminal. Run `ping ![hostname]`, where `hostname` is your Duckiebot’s hostname. Does it work? What is the output? Now try `ping ![hostname].local` instead. Does this work? For the router to find a device with its hostname, it needs to know that the hostname is in the local network, not somewhere else on internet. In contrast, try to ping a server outside of the local network: `ping google.com`. You can stop pinging the Duckiebot by pressing `CTRL-C`.
 
 Now, when you pinged your Duckiebot, did you notice that there was an IP address in the output? Is it yours? No! It is the IP of the Duckiebot! You can now use this IP address and try pinging with it. Do you need to add the `.local` this time? Can you figure out why?
 
