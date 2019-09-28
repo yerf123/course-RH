@@ -99,6 +99,6 @@ If you wish to install ROS on your computer, you can do so using this [link](htt
 Tutorials on using ROS with Duckietown are covered in the [next section](#dt-infrastructure). These tutorials are tailored to the Duckietown development process. Apart from this, we strongly recommend going through the official [ROS tutorials](https://wiki.ros.org/ROS/Tutorials). You should even try out the Beginner Level tutorials yourself if you have a native ROS installation. If not, read through them at least and proceed to the [next section](#dt-infrastructure) 
 
 
-### Additional Reading
+### Additional Reading {#ros-additional status=ready}
 - [ROS Graph Concepts](http://wiki.ros.org/ROS/Concepts)
 
