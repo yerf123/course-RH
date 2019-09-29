@@ -296,7 +296,7 @@ The environment variable VEHICLE_NAME is not set. Using 'riplbot01'.
 
 Now that we know how to create a simple publisher, let's create a subscriber which can receive these messages.
 
-Let us go back to our `src` folder and create a file called my_node_subscriber.py with the following content:
+Let us go back to our `src` folder and create a file called `my_node_subscriber.py` with the following content:
 
 ```python
 #!/usr/bin/env python
@@ -337,7 +337,7 @@ rosrun my_package my_node.py
 to 
 ```bash
 rosrun my_package my_node.py &
-rosrun my_package my_node_subsriber.py
+rosrun my_package my_node_subscriber.py
 ```
 
 Build the image on your Duckiebot again using
@@ -361,7 +361,7 @@ You should see the following output
 ```
 **CONGRATULATIONS!** You just built and run your first Duckietown-compliant and Duckiebot-compatible ROS subscriber.
 
-As a fun exercise, run 
+As a fun exercise, open a new terminal and run (without stopping the other process
     
     laptop $ dts start_gui_tools ![MY_ROBOT]
 
@@ -375,13 +375,13 @@ Have you seen a graph like this before?
 
 ## Launch files {#ros-launch status-ready} 
 
-You edited the `launch.sh` file to remove `roscore &` when it was already running. What if there was something which starts a new rosmaster when it doesn't exist? 
+You edited the `launch.sh` file to remove `roscore &` when it was already running. What if there was something which starts a new `rosmaster` when it doesn't exist? 
 
-You also added multiple `rosrun` commands to run the publisher and subscriber. Now imagine writing similar shell scripts for programming multiple robot behaviors. Some basic nodes such as camera and motor driver will be running in all operation scenarios of your Duckiebot, but other nodes will be added/removed to run specific behaviors (lane following with or without obstacle avoidance). You can think of this as an heirarchy where certain branches are activated optionally. (TODO: Awesome diagram) 
+You also added multiple `rosrun` commands to run the publisher and subscriber. Now imagine writing similar shell scripts for programming multiple robot behaviors. Some basic nodes such as a camera or motor driver will be running in all operation scenarios of your Duckiebot, but other nodes will be added/removed to run specific behaviors (e.g. lane following with or without obstacle avoidance). You can think of this as an hierarchy where certain branches are activated optionally. (TODO: Awesome diagram) 
 
 You can obviously write a "master" `launch.sh` which executes other shell scripts for heirarchies. How do you pass parameters between these scripts? Where do you store all of them? What if you want to use packages created by other people?
 
-ROS provides a tool to help us with all this. This tool is called [roslaunch](http://wiki.ros.org/roslaunch). 
+ROS again saves the day by providing us with a tool that handles all this! This tool is called [roslaunch](http://wiki.ros.org/roslaunch). 
 
 In this section, you will see how to use a ROS launch file to start both the publisher and subscriber together.
 
