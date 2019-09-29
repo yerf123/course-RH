@@ -234,7 +234,7 @@ started core service [/rosout]
 
 If you want to stop it, just use <kbd>Ctrl</kbd>+<kbd>C</kbd>.
 
-## ROS Publisher on Duckiebot {#ros-pub-laptop status-ready} 
+## ROS Publisher on Duckiebot {#ros-pub-duckiebot status-ready} 
 
 Now that we know how to package a piece of software into a Docker image for Duckietown, we can go one step further and write code that will run on the robot instead of our laptop.
 
@@ -292,7 +292,7 @@ The environment variable VEHICLE_NAME is not set. Using 'riplbot01'.
 
 **CONGRATULATIONS!** You just built and run your first Duckietown-compliant and Duckiebot-compatible ROS publisher.
 
-## ROS Subscriber on Duckiebot {#ros-sub-laptop status-ready} 
+## ROS Subscriber on Duckiebot {#ros-sub-duckiebot status-ready} 
 
 Now that we know how to create a simple publisher, let's create a subscriber which can receive these messages.
 
