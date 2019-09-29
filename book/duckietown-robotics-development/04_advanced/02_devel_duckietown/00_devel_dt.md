@@ -70,6 +70,7 @@ Open a terminal and move to the directory created by the git clone instruction a
 
     laptop $ dts devel build -f --arch amd64
 
+Note: If the above command is not recognized, you will first have to install it with `dts install devel`.
 
 If you correctly installed Docker and the duckietown-shell, you should see a long log that ends with something like the following:
 <figure>
