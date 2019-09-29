@@ -557,23 +557,23 @@ Can you explain why some of them worked, while some did not?
 
 ## Multi-agent Communication {#ros-multi-agent status=ready}
 
-In this subsection, you will learn how to communicate between your laptop and the Duckiebot using ROS. Start by verifying that (portainer)[#exercise:portainer] is running. 
+In this subsection, you will learn how to communicate between your laptop and the Duckiebot using ROS. Start by verifying that [Portainer](#exercise:portainer) is running. 
 
-Next, ping your Duckiebot to find its IP address
+Next, ping your Duckiebot to find its IP address:
 
     laptop $ ping ![MY_ROBOT].local
 
-Note down the address. Next, find the IP address of your computer. Note that you may have multiple IP addresses depending on how many networks you are connected to. If you have a Linux computer, you can find your IP using
+Note down the address. Next, find the IP address of your computer. Note that you may have multiple IP addresses depending on how many networks you are connected to. If you have a Linux computer, you can find your IP using:
 
     laptop $ ifconfig
 
 From the output, extract the IP address of the interface from which you are connected to your Duckiebot. For example, if you and your Duckiebot are both connected through WiFi, find your IP address from the WiFi connection.
 
-Run the following command
+Run the following command:
     
     laptop $ docker run -it --rm --net host duckietown/dt-ros-commons:daffy /bin/bash
 
-Right now, you are inside a ROS enabled container which is connected to the ROS_MASTER running on your laptop. But you want to connect to the ROS_MASTER on your duckiebot. To do this, inside the container, run
+Right now, you are inside a ROS-enabled container which is connected to the `rosmaster` running on your laptop. But you want to connect to the `rosmaster` on your duckiebot. To do this, inside the container, run:
 
     laptop $ export ROS_MASTER_URI=http://![MY_ROBOT_IP]:11311/
     laptop $ export ROS_IP=http://![MY_IP]:11311/
@@ -584,4 +584,6 @@ Now, run
  
     laptop $ rostopic list
 
-You should see topics from your Duckiebot appearing here. Viola! You have successfully established connection between your laptop and Duckiebot through ROS.
+You should see topics from your Duckiebot appearing here. Viola! You have successfully established connection between your laptop and Duckiebot through ROS!
+
+Are you confused about the `11311` above? You shouldn't. This is simply the default port number that ROS uses for communication. You can change it for any other free port.
