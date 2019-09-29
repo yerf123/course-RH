@@ -416,9 +416,9 @@ You can read more about how to interpret launch files [here](http://wiki.ros.org
 
 If you went through the above link on launch files, you might have come across the terms namespaces and remapping. Understanding namespaces and remapping is very crucial to working with large ROS software stacks. 
 
-Consider you have two Duckiebots - donald and quackermann. You want them to communicate with each other so you use one rosmaster for both the robots. You have two copies of the same node running on each of them which grabs images from the camera and publishes them on a topic called `/image`. Do you see a problem here? Would it not be better if they were called `/donald/image` and `/quackermann/image`? Here `donald` and `quackermann` are ROS namespaces. 
+Consider you have two Duckiebots - `donald` and `daisy`. You want them to communicate with each other so you use one `rosmaster` for both the robots. You have two copies of the same node running on each of them which grabs images from the camera and publishes them on a topic called `/image`. Do you see a problem here? Would it not be better if they were called `/donald/image` and `/daisy/image`? Here `donald` and `daisy` are ROS namespaces. 
 
-What if you were dealing with a robot which has two cameras? The names `/donald/camera_left/image` and `/donald/camera_right/image` are definitely the way to go. You should also be able to do this without writing a new python file for the second camera.    
+What if you were dealing with a robot which has two cameras? The names `/daisy/camera_left/image` and `/daisy/camera_right/image` are definitely the way to go. You should also be able to do this without writing a new Python file for the second camera.    
 
 Let's see how we can do this. First of all, we need to make sure that all the topics used by your Duckiebot are within its namespace. 
 
