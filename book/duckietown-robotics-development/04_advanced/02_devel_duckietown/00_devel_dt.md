@@ -70,6 +70,7 @@ Open a terminal and move to the directory created by the git clone instruction a
 
     laptop $ dts devel build -f --arch amd64
 
+Note: If the above command is not recognized, you will first have to install it with `dts install devel`.
 
 If you correctly installed Docker and the duckietown-shell, you should see a long log that ends with something like the following:
 <figure>
@@ -95,11 +96,11 @@ This is an empty launch script. Update it to launch your application.
 
 Now that we know how to build a Docker image for Duckietown, let’s put some code in one of them. We will see how to write a simple ROS program with Python, but any language supported by ROS should do it.
 
-Open a terminal and go to the directory `my-ros-program` created above. In ROS, every ROS `node` must belong to a ROS `package`. ROS packages are placed inside the directory `packages` in `my-ros-program`. Let go ahead and create a directory called `my_package` inside `packages`.
+Open a terminal and go to the directory `my-ros-program` created above. In ROS, every ROS node must belong to a ROS _package_. ROS packages are placed inside the directory `packages` in `my-ros-program`. Let go ahead and create a directory called `my_package` inside `packages`.
 
     laptop $ mkdir -p ./packages/my_package
 
-A ROS `package` is simply a directory containing two special files, `package.xml` and `CMakeLists.txt`. So, let’s turn the `my_package` folder into a ROS package by creating these two files.
+A ROS package is simply a directory containing two special files, `package.xml` and `CMakeLists.txt`. So, let’s turn the `my_package` folder into a ROS package by creating these two files.
 
 Create the file `package.xml` inside `my_package` using your favorite text editor and place/adjust the following content inside it:
 
@@ -118,7 +119,7 @@ Create the file `package.xml` inside `my_package` using your favorite text edito
 </package>
 ```
 
-Create the file `CMakeLists.txt` inside my_package using your favorite text editor and place/adjust the following content inside it:
+Create the file `CMakeLists.txt` inside `my_package` using your favorite text editor and place/adjust the following content inside it:
 
 ```cmake
 cmake_minimum_required(VERSION 2.8.3)
@@ -131,7 +132,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package()
 ```
 
-Now that we have a ROS `package`, we can create a ROS `node` inside it. Create the directory `src` inside `my_package` and use your favorite text editor to create the file `./packages/my_package/src/my_node.py` and place the following code inside it:
+Now that we have a ROS package, we can create a ROS node inside it. Create the directory `src` inside `my_package` and use your favorite text editor to create the file `./packages/my_package/src/my_node.py` and place the following code inside it:
 
 ```python
 #!/usr/bin/env python
@@ -181,7 +182,8 @@ echo "This is an empty launch script. Update it to launch your application."
 with the following lines 
 
 ```bash
-roscore &; sleep 5
+roscore &
+sleep 5
 rosrun my_package my_node.py
 ```
 
@@ -228,13 +230,15 @@ started core service [/rosout]
 [INFO] [1569606198.149470]: Publishing message: 'Hello World!'
 ```
 
-**CONGRATULATIONS!** You just built and run your own Duckietown-compliant ROS publisher.
+**CONGRATULATIONS!** You just built and run your own Duckietown-compliant ROS publisher!
+
+If you want to stop it, just use <kbd>Ctrl</kbd>+<kbd>C</kbd>.
 
 ## ROS Publisher on Duckiebot {#ros-pub-laptop status-ready} 
 
 Now that we know how to package a piece of software into a Docker image for Duckietown, we can go one step further and write code that will run on the robot instead of our laptop.
 
-This part assumes that you have a Duckiebot up and running with hostname ![MY_ROBOT]. Of course, you don’t need to change the hostname to ![MY_ROBOT], just replace it with your robot name in the instructions below. You can make sure that your robot is ready by executing the command 
+This part assumes that you have a Duckiebot up and running with hostname `![MY_ROBOT]`. Of course, you don’t need to change the hostname to `![MY_ROBOT]`, just replace it with your robot name in the instructions below. You can make sure that your robot is ready by executing the command 
 
     laptop $ ping ![MY_ROBOT].local
 
@@ -242,41 +246,38 @@ If you can ping the robot, you are good to go.
 
 Before you start, you need to configure the Duckiebot to accept new code. This is necessary because the Duckiebot by defaults runs only code released by the Duckietown community. In order to configure the robot to accept custom code, run the following command,
 
-    laptop $ dts devel watchtower stop -H MY_ROBOT.local
+    laptop $ dts devel watchtower stop -H ![MY_ROBOT].local
 
-**Note**: You need to do this once and the effect will be lost when the Duckiebot reboots.
+Note: You need to do this every time you reboot your Duckiebot.
 
-Let us go back to our node file my_node.py and change the line:
+Let us go back to our node file `my_node.py` and change the line:
 
 ```python
-...
             message = "Hello World!"
-...
 ```
 
 to,
 
 ```python
-...
             message = "Hello from %s" % os.environ['VEHICLE_NAME']
-...
 ```
 
-Since `roscore` is already running on the Duckiebot, we need to **remove** the following line from `launch.sh`
+Since `roscore` is already running on the Duckiebot, we need to _remove_ the following lines from `launch.sh`:
 
 ```bash
-roscore &; sleep 5
+roscore &
+sleep 5
 ```
 
-We can now slightly modify the instructions for building the image so that the image gets built directly on the robot instead of your laptop or desktop machine. Run the command
+We can now slightly modify the instructions for building the image so that the image gets built directly on the robot instead of your laptop or desktop machine. Run the command:
 
-    laptop $ dts devel build -f --arch arm32v7 -H MY_ROBOT.local
+    laptop $ dts devel build -f --arch arm32v7 -H ![MY_ROBOT].local
 
 As you can see, we changed two things, one is `--arch arm32v7` which tells Docker to build an image that will run on `ARM` architecture (which is the architecture the CPU on the robot is based on), the second is `-H ![MY_ROBOT].local` which tells Docker where to build the image. 
 
-Once the image is built, we can run it on the robot by running the command
+Once the image is built, we can run it on the robot by running the command:
     
-    laptop $ docker -H MY_ROBOT.local run -it --rm --net=host duckietown/my-ros-program:v1
+    laptop $ docker -H ![MY_ROBOT].local run -it --rm --net=host duckietown/my-ros-program:v1
 
 If everything worked as expected, you should see the following output,
 
