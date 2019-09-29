@@ -81,7 +81,7 @@ Using the following concepts,
 
 create a Docker container with a folder on your laptop mounted on the container. However, this time, instead of exporting the `ROS_MASTER_URI` and `ROS_IP` after entering the container, do it with the `docker run` command. You already know it from [here](#exercise:ex-docker-envvar).
 
-Run the [lane following demo](+#demo-lane-following). Once your Duckiebot starts moving, record the camera images and the wheel commands from your duckiebot using rosbag. Navigate to the mounted folder using the `cd` command and then run (TODO: Check command)
+Run the [lane following demo](+opmanual_duckiebot#demo-lane-following). Once your Duckiebot starts moving, record the camera images and the wheel commands from your duckiebot using rosbag. Navigate to the mounted folder using the `cd` command and then run (TODO: Check command)
 
     laptop $ rosbag record /![MY_ROBOT]/camera_node/image/compressed /![MY_ROBOT]/wheels_driver_node/wheels_cmd
   
