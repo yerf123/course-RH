@@ -1,6 +1,6 @@
 # Introduction to ROS {#ros-intro status=ready}
 
-The [official ROS wiki](http://wiki.ros.org/ROS/Introduction) describes ROS as:
+The [official wiki](http://wiki.ros.org/ROS/Introduction) describes ROS as:
 ```
 ... an open-source, meta-operating system for your robot. It provides the services you would expect from an operating system, including hardware abstraction, low-level device control, implementation of commonly-used functionality, message-passing between processes, and package management. It also provides tools and libraries for obtaining, building, writing, and running code across multiple computers.
 ```
@@ -62,9 +62,7 @@ else:
 run_motors(cmd)
 ```
 
-It is easy to see that when you start thinking about having even mode advanced modes of operation such as intersection navigation, Duckiebot detection, traffic sign detection, auto-charging, your program will end up being a massive stack of if-else statements. What if you could split your program into different independent building blocks, one which only gets images from cameras, one which only detects duckie pedestrians, one which controlls the motors and so on. Would that help you with organizing your code in a better way? How would those blocks communicate with each other? Moreover, how do you switch from autonomous mode to manual mode while your Duckiebot is still running?
-
-What happens when you try to do this for advanced robots with a lot of sensors and a large number of possible behaviors?
+It is easy to see that when you start thinking about having even mode advanced modes of operation such as intersection navigation, Duckiebot detection, traffic sign detection, auto-charging, your program will end up being a massive stack of if-else statements. What if you could split your program into different independent building blocks, one which only gets images from cameras, one which only detects duckie pedestrians, one which controlls the motors and so on. Would that help you with organizing your code in a better way? How would those blocks communicate with each other? Moreover, how do you switch from autonomous mode to manual mode while your Duckiebot is still running? And what will happen once you try to do this for advanced robots with a lot of sensors and a large number of possible behaviors?
 
 ## Basics of ROS {#ros-basics status=ready}
 Look at the following system (TODO: proper diagram, make nodes ellipses and topics in rectangles, update text accordingly)
