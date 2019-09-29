@@ -10,7 +10,9 @@ In this section, you will learn everything about creating a Duckietown-compliant
   Requires: [Duckiebot initialization](+opmanual_duckiebot#setup-duckiebot)
 
   Requires: [Docker poweruser skills](#docker-poweruser)
+  
   Requires: [Basic understanding of ROS](#ros-intro) 
+  
   Results: Developer knowledge of ROS
 </div>
 
