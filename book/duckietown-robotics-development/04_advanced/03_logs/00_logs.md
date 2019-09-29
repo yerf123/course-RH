@@ -20,7 +20,9 @@ Robotics is innately married to hardware. However, when we develop and test our 
 
 ## Rosbag {#rosbag}
 
+
 A bag is a file format in ROS for storing ROS message data. Bags, named so because of their `.bag` extension, have an important role in ROS. Bags are typically created by a tool like `rosbag`, which subscribes to one or more ROS topics, and stores the serialized message data in a file as it is received. These bag files can also be played back in ROS to the same topics they were recorded from, or even remapped to new topics.
+
 
 Please go through [this](http://wiki.ros.org/rosbag/Commandline) link for more information.
 
