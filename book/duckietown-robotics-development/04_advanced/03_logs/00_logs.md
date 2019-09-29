@@ -71,6 +71,22 @@ finally:
 
 ## Exercises {#rosbag-exercise}
 
+
+#### Record bag file {#exercise:rosbag-record}
+
+Using the following concepts, 
+
+- [Getting data in and out of your container](#docker-poweruser)
+- [Communication between laptop and Duckiebot](#ros-multi-agent)
+
+create a Docker container with a folder on your laptop mounted on the container. However, this time, instead of exporting the `ROS_MASTER_URI` and `ROS_IP` after entering the container, do it with the `docker run` command.
+
+Run the [lane following demo](+#demo-lane-following). Once your Duckiebot starts moving, record the camera images and the wheel commands from your duckiebot using rosbag. Navigate to the mounted folder using the `cd` command and then run (TODO: Check command)
+
+    laptop $ rosbag record /![MY_ROBOT]/camera_node/image/compressed /![MY_ROBOT]/wheels_driver_node/wheels_cmd
+  
+Record the bag file for 30 seconds and then stop the recording using `Ctrl+C`. Then stop the demo as well.
+
 #### Analyze bag files {#exercise:rosbag-stats}
 
 Download [this](https://www.dropbox.com/s/11t9p8efzjy1az9/example_rosbag_H3.bag?dl=1) bag file. Using the following concepts,
@@ -106,3 +122,15 @@ create a Docker image which can analyze bag files and produce the following outp
     median: 0.11
 ``` 
 Make sure to mount the bag file to the Docker image, not copy. 
+
+Run the same analysis with the bag file you recorded in the previous exercise.
+
+#### Processing bag files {#exercise:rosbag-process}
+
+Using the following concepts, 
+
+- [Getting data in and out of your container](#docker-poweruser)
+- [Creating a basic Duckietown ROS enabled Docker image](#basic-structure)
+
+
+create a Docker image which can process a bag file. For every image message in the bag file, extract the timestamp from the message, draw it on top of the image, and write it to a new bag file. Use the bag file you recorded for this exercise. The new bag file should be generated in the mounted folder.
