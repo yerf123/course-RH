@@ -578,7 +578,7 @@ Right now, you are inside a ROS-enabled container which is connected to the `ros
     laptop $ export ROS_MASTER_URI=http://![MY_ROBOT_IP]:11311/
     laptop $ export ROS_IP=http://![MY_IP]:11311/
 
-Replace ![MY_ROBOT_IP] and ![MY_IP] from the IP addresses extracted above, in that order. 
+Replace `![MY_ROBOT_IP]` and `![MY_IP]` from the IP addresses extracted above, in that order. 
 
 Now, run:
  
