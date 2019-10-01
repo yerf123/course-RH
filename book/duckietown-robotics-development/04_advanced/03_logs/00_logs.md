@@ -96,7 +96,7 @@ Record the bag file for 30 seconds and then stop the recording using `Ctrl+C`. U
 
 Stop the demo before proceeding.
 
-</end>
+<end/>
 
 #### Analyze bag files {#exercise:rosbag-stats}
 
@@ -139,7 +139,7 @@ Note: Make sure to mount the bag file to the Docker container, instead of copyin
 
 Run the same analysis with the bag file you recorded in the previous exercise.
 
-</end>
+<end/>
 
 #### Processing bag files {#exercise:rosbag-process}
 
@@ -175,4 +175,4 @@ Stop the `rosbag play` using `CTRL+C` and now run the following command inside t
 
 Again, use `start_gui_tools` but this time check `/![MY_ROBOT]/camera_node/image/compressed`. What's going on? Why? What does the last part of the original command do?
 
-</end>
+<end/>
