@@ -122,7 +122,7 @@ You are now in your new `ubuntu` container! Try to play around, you can try to u
 
 If you are sure about the difference between the host and the container, you might want to see what happens when you do `rm -rf /` __IN THE CONTAINER__. Do that extremely carefully because that wipes out all of the root of a system. You do not want to run this on your host. By running the above command in a Docker container you will destroy the OS inside the container - but you can just exit and start another one. If instead you have confused host and container, at this point you probably need to re-install your OS.
 
-You can check which containers you are running using the docker `ps` command - analogous to the Linux `ps` command. Open a new terminal window (don'’'t close the other one just yet) and type:
+You can check which containers you are running using the docker `ps` command - analogous to the Linux `ps` command. Open a new terminal window (do not close the other one just yet) and type:
 
     laptop $ docker ps
 
