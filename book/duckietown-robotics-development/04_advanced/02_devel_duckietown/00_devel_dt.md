@@ -296,7 +296,7 @@ The environment variable VEHICLE_NAME is not set. Using 'riplbot01'.
 
 Now that we know how to create a simple publisher, let's create a subscriber which can receive these messages.
 
-Let us go back to our `src` folder and create a file called my_node_subscriber.py with the following content:
+Let us go back to our `src` folder and create a file called `my_node_subscriber.py` with the following content:
 
 ```python
 #!/usr/bin/env python
@@ -337,7 +337,7 @@ rosrun my_package my_node.py
 to 
 ```bash
 rosrun my_package my_node.py &
-rosrun my_package my_node_subsriber.py
+rosrun my_package my_node_subscriber.py
 ```
 
 Build the image on your Duckiebot again using
@@ -361,7 +361,7 @@ You should see the following output
 ```
 **CONGRATULATIONS!** You just built and run your first Duckietown-compliant and Duckiebot-compatible ROS subscriber.
 
-As a fun exercise, run 
+As a fun exercise, open a new terminal and run (without stopping the other process
     
     laptop $ dts start_gui_tools ![MY_ROBOT]
 
@@ -375,13 +375,13 @@ Have you seen a graph like this before?
 
 ## Launch files {#ros-launch status-ready} 
 
-You edited the `launch.sh` file to remove `roscore &` when it was already running. What if there was something which starts a new rosmaster when it doesn't exist? 
+You edited the `launch.sh` file to remove `roscore &` when it was already running. What if there was something which starts a new `rosmaster` when it doesn't exist? 
 
-You also added multiple `rosrun` commands to run the publisher and subscriber. Now imagine writing similar shell scripts for programming multiple robot behaviors. Some basic nodes such as camera and motor driver will be running in all operation scenarios of your Duckiebot, but other nodes will be added/removed to run specific behaviors (lane following with or without obstacle avoidance). You can think of this as an heirarchy where certain branches are activated optionally. (TODO: Awesome diagram) 
+You also added multiple `rosrun` commands to run the publisher and subscriber. Now imagine writing similar shell scripts for programming multiple robot behaviors. Some basic nodes such as a camera or a motor driver will be running in all operation scenarios of your Duckiebot, but other nodes will be added/removed to run specific behaviors (e.g. lane following with or without obstacle avoidance). You can think of this as an hierarchy where certain branches are activated optionally. (TODO: Awesome diagram) 
 
 You can obviously write a "master" `launch.sh` which executes other shell scripts for heirarchies. How do you pass parameters between these scripts? Where do you store all of them? What if you want to use packages created by other people?
 
-ROS provides a tool to help us with all this. This tool is called [roslaunch](http://wiki.ros.org/roslaunch). 
+ROS again saves the day by providing us with a tool that handles all this! This tool is called [roslaunch](http://wiki.ros.org/roslaunch). 
 
 In this section, you will see how to use a ROS launch file to start both the publisher and subscriber together.
 
@@ -416,9 +416,9 @@ You can read more about how to interpret launch files [here](http://wiki.ros.org
 
 If you went through the above link on launch files, you might have come across the terms namespaces and remapping. Understanding namespaces and remapping is very crucial to working with large ROS software stacks. 
 
-Consider you have two Duckiebots - donald and quackermann. You want them to communicate with each other so you use one rosmaster for both the robots. You have two copies of the same node running on each of them which grabs images from the camera and publishes them on a topic called `/image`. Do you see a problem here? Would it not be better if they were called `/donald/image` and `/quackermann/image`? Here `donald` and `quackermann` are ROS namespaces. 
+Consider you have two Duckiebots - `donald` and `daisy`. You want them to communicate with each other so you use one `rosmaster` for both the robots. You have two copies of the same node running on each of them which grabs images from the camera and publishes them on a topic called `/image`. Do you see a problem here? Would it not be better if they were called `/donald/image` and `/daisy/image`? Here `donald` and `daisy` are ROS namespaces. 
 
-What if you were dealing with a robot which has two cameras? The names `/donald/camera_left/image` and `/donald/camera_right/image` are definitely the way to go. You should also be able to do this without writing a new python file for the second camera.    
+What if you were dealing with a robot which has two cameras? The names `/daisy/camera_left/image` and `/daisy/camera_right/image` are definitely the way to go. You should also be able to do this without writing a new Python file for the second camera.    
 
 Let's see how we can do this. First of all, we need to make sure that all the topics used by your Duckiebot are within its namespace. 
 
@@ -512,7 +512,7 @@ Edit the `./packages/my_package/launch/multiple_nodes.launch` file to contain th
 
 Check `rqt_graph`. Does it make sense? 
 
-Now, replace 
+Now, replace
 
 ```xml
     <node pkg="my_package" type="my_node_subscriber.py" name="my_node_subscriber_1"  output="screen">
@@ -557,31 +557,34 @@ Can you explain why some of them worked, while some did not?
 
 ## Multi-agent Communication {#ros-multi-agent status=ready}
 
-In this subsection, you will learn how to communicate between your laptop and the Duckiebot using ROS. Start by verifying that (portainer)[#exercise:portainer] is running. 
+In this subsection, you will learn how to communicate between your laptop and the Duckiebot using ROS. Start by verifying that [Portainer](#exercise:portainer) is running. 
 
-Next, ping your Duckiebot to find its IP address
+Next, ping your Duckiebot to find its IP address:
 
     laptop $ ping ![MY_ROBOT].local
 
-Note down the address. Next, find the IP address of your computer. Note that you may have multiple IP addresses depending on how many networks you are connected to. If you have a Linux computer, you can find your IP using
+Note down the address. Next, find the IP address of your computer. Note that you may have multiple IP addresses depending on how many networks you are connected to. If you have a Linux computer, you can find your IP using:
 
     laptop $ ifconfig
 
 From the output, extract the IP address of the interface from which you are connected to your Duckiebot. For example, if you and your Duckiebot are both connected through WiFi, find your IP address from the WiFi connection.
 
-Run the following command
+Run the following command:
     
     laptop $ docker run -it --rm --net host duckietown/dt-ros-commons:daffy /bin/bash
 
-Right now, you are inside a ROS enabled container which is connected to the ROS_MASTER running on your laptop. But you want to connect to the ROS_MASTER on your duckiebot. To do this, inside the container, run
+Right now, you are inside a ROS-enabled container which is connected to the `rosmaster` running on your laptop. But you want to connect to the `rosmaster` on your duckiebot. To do this, inside the container, run:
 
     laptop $ export ROS_MASTER_URI=http://![MY_ROBOT_IP]:11311/
     laptop $ export ROS_IP=http://![MY_IP]:11311/
 
-Replace ![MY_ROBOT_IP] and ![MY_IP] from the IP addresses extracted above, in that order. 
+Replace `![MY_ROBOT_IP]` and `![MY_IP]` from the IP addresses extracted above, in that order. 
 
-Now, run
+Now, run:
  
     laptop $ rostopic list
 
-You should see topics from your Duckiebot appearing here. Viola! You have successfully established connection between your laptop and Duckiebot through ROS.
+You should see topics from your Duckiebot appearing here. Viola! You have successfully established connection between your laptop and Duckiebot through ROS!
+
+Are you confused about the `11311` above? You shouldn't. This is simply the default port number that ROS uses for communication. You can change it for any other free port.
+
