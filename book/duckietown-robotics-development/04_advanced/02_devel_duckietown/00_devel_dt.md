@@ -10,9 +10,9 @@ In this section, you will learn everything about creating a Duckietown-compliant
   Requires: [Duckiebot initialization](+opmanual_duckiebot#setup-duckiebot)
 
   Requires: [Docker poweruser skills](#docker-poweruser)
-  
-  Requires: [Basic understanding of ROS](#ros-intro) 
-  
+
+  Requires: [Basic understanding of ROS](#ros-intro)
+
   Results: Developer knowledge of ROS
 </div>
 
@@ -29,7 +29,7 @@ First of all, you will need to make a copy of the template in your own GitHub ac
   <img style="width:10em" src="images/fork.png"/>
 </figure>
 
-Now that you have a copy of the template, you can create new repositories based off of it. In order to do so, go to [GitHub](https://github.com/) and click on the button [+] at the top-right corner of the page and then click on New Repository. 
+Now that you have a copy of the template, you can create new repositories based off of it. In order to do so, go to [GitHub](https://github.com/) and click on the button [+] at the top-right corner of the page and then click on New Repository.
 
 <figure>
   <img style="width:15em" src="images/new_repo.png"/>
@@ -41,7 +41,7 @@ You will see a page that looks like the following:
   <img style="width:45em" src="images/new_repo_page.png"/>
 </figure>
 
-In the section **Repository template**, select **YOUR_NAME/template-ros**. Pick a name for your repository (say `my-ros-program`) and press the button **Create repository**. Note, you can replace `my-ros-program` with the name of the repository that you prefer, make sure you use the right name in the instructions below.
+In the section **Repository template**, select **YOUR_NAME/template-ros**. Pick a name for your repository (say `my-ros-program`) and press the button **Create repository**. Note, you can replace `my-ros-program` with the name of the repository that you prefer. Note that no capital letters are allowed and make sure you use the right name in the instructions below.
 
 This will create a new repository and copy everything from the repository `template-ros` to your new repository. You can now open a terminal and clone your newly created repository.
 
@@ -61,7 +61,7 @@ to
 ARG REPO_NAME="my-ros-program"
 ```
 
-Save the changes. 
+Save the changes.
 
 We can now build the image, even though there won't be much going on inside it until we place our code in it.
 
@@ -179,7 +179,7 @@ We now need to tell Docker we want this script to be the one executed when we ru
 echo "This is an empty launch script. Update it to launch your application."
 ```
 
-with the following lines 
+with the following lines
 
 ```bash
 roscore &
@@ -234,11 +234,11 @@ started core service [/rosout]
 
 If you want to stop it, just use <kbd>Ctrl</kbd>+<kbd>C</kbd>.
 
-## ROS Publisher on Duckiebot {#ros-pub-duckiebot status-ready} 
+## ROS Publisher on Duckiebot {#ros-pub-duckiebot status-ready}
 
 Now that we know how to package a piece of software into a Docker image for Duckietown, we can go one step further and write code that will run on the robot instead of our laptop.
 
-This part assumes that you have a Duckiebot up and running with hostname `![MY_ROBOT]`. Of course, you don’t need to change the hostname to `![MY_ROBOT]`, just replace it with your robot name in the instructions below. You can make sure that your robot is ready by executing the command 
+This part assumes that you have a Duckiebot up and running with hostname `![MY_ROBOT]`. Of course, you don’t need to change the hostname to `![MY_ROBOT]`, just replace it with your robot name in the instructions below. You can make sure that your robot is ready by executing the command
 
     laptop $ ping ![MY_ROBOT].local
 
@@ -274,10 +274,10 @@ We can now slightly modify the instructions for building the image so that the i
 
     laptop $ dts devel build -f --arch arm32v7 -H ![MY_ROBOT].local
 
-As you can see, we changed two things, one is `--arch arm32v7` which tells Docker to build an image that will run on `ARM` architecture (which is the architecture the CPU on the robot is based on), the second is `-H ![MY_ROBOT].local` which tells Docker where to build the image. 
+As you can see, we changed two things, one is `--arch arm32v7` which tells Docker to build an image that will run on `ARM` architecture (which is the architecture the CPU on the robot is based on), the second is `-H ![MY_ROBOT].local` which tells Docker where to build the image.
 
 Once the image is built, we can run it on the robot by running the command:
-    
+
     laptop $ docker -H ![MY_ROBOT].local run -it --rm --net=host duckietown/my-ros-program:v1
 
 If everything worked as expected, you should see the following output,
@@ -292,7 +292,7 @@ The environment variable VEHICLE_NAME is not set. Using 'riplbot01'.
 
 **CONGRATULATIONS!** You just built and run your first Duckietown-compliant and Duckiebot-compatible ROS publisher.
 
-## ROS Subscriber on Duckiebot {#ros-sub-duckiebot status-ready} 
+## ROS Subscriber on Duckiebot {#ros-sub-duckiebot status-ready}
 
 Now that we know how to create a simple publisher, let's create a subscriber which can receive these messages.
 
@@ -313,7 +313,7 @@ class MyNode(DTROS):
         super(MyNode, self).__init__(node_name=node_name)
         # construct publisher
         self.sub = rospy.Subscriber("chatter", String, self.callback)
-        
+
     def callback(self, data):
         rospy.loginfo("I heard %s", data.data)
 
@@ -334,7 +334,7 @@ Then edit the following line from `launch.sh`
 ```bash
 rosrun my_package my_node.py
 ```
-to 
+to
 ```bash
 rosrun my_package my_node.py &
 rosrun my_package my_node_subsriber.py
@@ -345,7 +345,7 @@ Build the image on your Duckiebot again using
     laptop $ dts devel build -f --arch arm32v7 -H MY_ROBOT.local
 
 Once the image is built, we can run it on the robot by running the command
-    
+
     laptop $ docker -H MY_ROBOT.local run -it --rm --net=host duckietown/my-ros-program:v1
 
 You should see the following output
@@ -361,27 +361,27 @@ You should see the following output
 ```
 **CONGRATULATIONS!** You just built and run your first Duckietown-compliant and Duckiebot-compatible ROS subscriber.
 
-As a fun exercise, run 
-    
+As a fun exercise, run
+
     laptop $ dts start_gui_tools ![MY_ROBOT]
 
-and then inside it, run 
-    
+and then inside it, run
+
     laptop $ rqt_graph
 
 You should see this (TODO: add image)
 
-Have you seen a graph like this before? 
+Have you seen a graph like this before?
 
-## Launch files {#ros-launch status-ready} 
+## Launch files {#ros-launch status-ready}
 
-You edited the `launch.sh` file to remove `roscore &` when it was already running. What if there was something which starts a new rosmaster when it doesn't exist? 
+You edited the `launch.sh` file to remove `roscore &` when it was already running. What if there was something which starts a new rosmaster when it doesn't exist?
 
-You also added multiple `rosrun` commands to run the publisher and subscriber. Now imagine writing similar shell scripts for programming multiple robot behaviors. Some basic nodes such as camera and motor driver will be running in all operation scenarios of your Duckiebot, but other nodes will be added/removed to run specific behaviors (lane following with or without obstacle avoidance). You can think of this as an heirarchy where certain branches are activated optionally. (TODO: Awesome diagram) 
+You also added multiple `rosrun` commands to run the publisher and subscriber. Now imagine writing similar shell scripts for programming multiple robot behaviors. Some basic nodes such as camera and motor driver will be running in all operation scenarios of your Duckiebot, but other nodes will be added/removed to run specific behaviors (lane following with or without obstacle avoidance). You can think of this as an heirarchy where certain branches are activated optionally. (TODO: Awesome diagram)
 
 You can obviously write a "master" `launch.sh` which executes other shell scripts for heirarchies. How do you pass parameters between these scripts? Where do you store all of them? What if you want to use packages created by other people?
 
-ROS provides a tool to help us with all this. This tool is called [roslaunch](http://wiki.ros.org/roslaunch). 
+ROS provides a tool to help us with all this. This tool is called [roslaunch](http://wiki.ros.org/roslaunch).
 
 In this section, you will see how to use a ROS launch file to start both the publisher and subscriber together.
 
@@ -396,10 +396,10 @@ Create a folder called `launch` inside your package and then create a file insid
 </launch>
 ```
 
-Then replace the following lines inside `launch.sh` file 
+Then replace the following lines inside `launch.sh` file
 ```bash
 rosrun my_package my_node.py &
-rosrun my_package my_node_subscriber.py 
+rosrun my_package my_node_subscriber.py
 ```
 
 with
@@ -414,13 +414,13 @@ You can read more about how to interpret launch files [here](http://wiki.ros.org
 
 ## Namespaces and Remapping {#ros-namespace-remap status=ready}
 
-If you went through the above link on launch files, you might have come across the terms namespaces and remapping. Understanding namespaces and remapping is very crucial to working with large ROS software stacks. 
+If you went through the above link on launch files, you might have come across the terms namespaces and remapping. Understanding namespaces and remapping is very crucial to working with large ROS software stacks.
 
-Consider you have two Duckiebots - donald and quackermann. You want them to communicate with each other so you use one rosmaster for both the robots. You have two copies of the same node running on each of them which grabs images from the camera and publishes them on a topic called `/image`. Do you see a problem here? Would it not be better if they were called `/donald/image` and `/quackermann/image`? Here `donald` and `quackermann` are ROS namespaces. 
+Consider you have two Duckiebots - donald and quackermann. You want them to communicate with each other so you use one rosmaster for both the robots. You have two copies of the same node running on each of them which grabs images from the camera and publishes them on a topic called `/image`. Do you see a problem here? Would it not be better if they were called `/donald/image` and `/quackermann/image`? Here `donald` and `quackermann` are ROS namespaces.
 
 What if you were dealing with a robot which has two cameras? The names `/donald/camera_left/image` and `/donald/camera_right/image` are definitely the way to go. You should also be able to do this without writing a new python file for the second camera.    
 
-Let's see how we can do this. First of all, we need to make sure that all the topics used by your Duckiebot are within its namespace. 
+Let's see how we can do this. First of all, we need to make sure that all the topics used by your Duckiebot are within its namespace.
 
 Edit the `./packages/my_package/launch/multiple_nodes.launch` to look like this:
 
@@ -428,12 +428,12 @@ Edit the `./packages/my_package/launch/multiple_nodes.launch` to look like this:
 <launch>
 
   <group ns="$(arg veh)">  
-  
+
     <node pkg="my_package" type="my_node.py" name="my_node" output="screen"/>
     <node pkg="my_package" type="my_node_subscriber.py" name="my_node_subscriber"  output="screen"/>
 
   </group>
-   
+
 </launch>
 ```
 
@@ -446,7 +446,7 @@ Build and run the image. Once again run `rqt_graph` like above. You should see s
 
 As a next step, we need to ensure that we can launch multiple instances of the same node with different names, and publishing topics corresponding to those names. For example, running two camera nodes with names `camera_left` and `camera_right` respectively, publishing topics `/my_robot/camera_left/image` and `/my_robot/camera_right/image`.
 
-Notice how the `<node>` tag in the launch file has a `name` attribute. You can have multiple `<node>` tags with different names for the same python node file. The name provided here will override the name you give inside the python file for the node. 
+Notice how the `<node>` tag in the launch file has a `name` attribute. You can have multiple `<node>` tags with different names for the same python node file. The name provided here will override the name you give inside the python file for the node.
 
 Edit the `./packages/my_package/launch/multiple_nodes.launch` file to have two publishers and two subscribers as below:
 
@@ -454,7 +454,7 @@ Edit the `./packages/my_package/launch/multiple_nodes.launch` file to have two p
 <launch>
 
   <group ns="$(arg veh)">  
-  
+
     <node pkg="my_package" type="my_node.py" name="my_node_1" output="screen"/>
     <node pkg="my_package" type="my_node.py" name="my_node_2" output="screen"/>
     <node pkg="my_package" type="my_node_subscriber.py" name="my_node_subscriber_1"  output="screen"/>
@@ -473,7 +473,7 @@ Check `rqt_graph`. All communications are happening on one topic. You still cann
         ...
 ```
 
-to 
+to
 
 ```python
         ...
@@ -485,7 +485,7 @@ All we did was add a tilde(`~`) sign in the beginning of the topic. Names that s
 
 Do this for the subsciber node as well. Run the experiment and observe `rqt_graph` again. This time, switch the graph type from `Nodes only` to `Nodes/Topics (all)` and uncheck `Hide: Dead sinks` and `Hide: Leaf topics`. Play with these two "Hide" options to see what they mean.
 
-All looks very well organized, except that no nodes are speaking to any other node. This is where the magic of remapping begins. 
+All looks very well organized, except that no nodes are speaking to any other node. This is where the magic of remapping begins.
 
 Edit the `./packages/my_package/launch/multiple_nodes.launch` file to contain the following:
 
@@ -493,14 +493,14 @@ Edit the `./packages/my_package/launch/multiple_nodes.launch` file to contain th
 <launch>
 
   <group ns="$(arg veh)">  
-  
+
     <node pkg="my_package" type="my_node.py" name="my_node_1" output="screen"/>
     <node pkg="my_package" type="my_node.py" name="my_node_2" output="screen"/>
 
     <node pkg="my_package" type="my_node_subscriber.py" name="my_node_subscriber_1"  output="screen">
         <remap from="~/chatter" to="/$(arg veh)/my_node_1/chatter"/>
     </node>
-    
+
     <node pkg="my_package" type="my_node_subscriber.py" name="my_node_subscriber_2"  output="screen">
         <remap from="~/chatter" to="/$(arg veh)/my_node_2/chatter"/>
     </node>
@@ -510,9 +510,9 @@ Edit the `./packages/my_package/launch/multiple_nodes.launch` file to contain th
 </launch>
 ```
 
-Check `rqt_graph`. Does it make sense? 
+Check `rqt_graph`. Does it make sense?
 
-Now, replace 
+Now, replace
 
 ```xml
     <node pkg="my_package" type="my_node_subscriber.py" name="my_node_subscriber_1"  output="screen">
@@ -557,7 +557,7 @@ Can you explain why some of them worked, while some did not?
 
 ## Multi-agent Communication {#ros-multi-agent status=ready}
 
-In this subsection, you will learn how to communicate between your laptop and the Duckiebot using ROS. Start by verifying that (portainer)[#exercise:portainer] is running. 
+In this subsection, you will learn how to communicate between your laptop and the Duckiebot using ROS. Start by verifying that (portainer)[#exercise:portainer] is running.
 
 Next, ping your Duckiebot to find its IP address
 
@@ -570,7 +570,7 @@ Note down the address. Next, find the IP address of your computer. Note that you
 From the output, extract the IP address of the interface from which you are connected to your Duckiebot. For example, if you and your Duckiebot are both connected through WiFi, find your IP address from the WiFi connection.
 
 Run the following command
-    
+
     laptop $ docker run -it --rm --net host duckietown/dt-ros-commons:daffy /bin/bash
 
 Right now, you are inside a ROS enabled container which is connected to the ROS_MASTER running on your laptop. But you want to connect to the ROS_MASTER on your duckiebot. To do this, inside the container, run
@@ -578,10 +578,10 @@ Right now, you are inside a ROS enabled container which is connected to the ROS_
     laptop $ export ROS_MASTER_URI=http://![MY_ROBOT_IP]:11311/
     laptop $ export ROS_IP=http://![MY_IP]:11311/
 
-Replace ![MY_ROBOT_IP] and ![MY_IP] from the IP addresses extracted above, in that order. 
+Replace ![MY_ROBOT_IP] and ![MY_IP] from the IP addresses extracted above, in that order.
 
 Now, run
- 
+
     laptop $ rostopic list
 
 You should see topics from your Duckiebot appearing here. Viola! You have successfully established connection between your laptop and Duckiebot through ROS.
