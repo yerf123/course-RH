@@ -126,6 +126,7 @@ create a Docker image which can analyze bag files and produce the following outp
     average: 0.26
     median: 0.11
 ``` 
+
 Note: Make sure to mount the bag file to the Docker container, instead of copying it. 
 
 Run the same analysis with the bag file you recorded in the previous exercise.
