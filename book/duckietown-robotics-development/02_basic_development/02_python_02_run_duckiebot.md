@@ -20,7 +20,7 @@ Let us go back to our script file my_script.py and change it to:
 ```python
 import os
 message = "Hello from %s!" % os.environ['VEHICLE_NAME']
-print(message)</code>
+print(message)
 ```
 
 We can now modify slightly the instructions for building the image so that the image gets built directly on the robot instead of your laptop or desktop machine. Run the command
