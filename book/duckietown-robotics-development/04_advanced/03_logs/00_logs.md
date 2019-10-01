@@ -88,7 +88,7 @@ create a Docker container with a folder on your laptop mounted on the container.
 
 Run the [lane following demo](+opmanual_duckiebot#demo-lane-following). Once your Duckiebot starts moving, record the camera images and the wheel commands from your duckiebot using `rosbag`. Navigate to the mounted folder using the `cd` command and then run (TODO: Check command)
 
-    laptop $ rosbag record /![MY_ROBOT]/camera_node/image/compressed /![MY_ROBOT]/wheels_driver_node/wheels_cmd
+    duckiebot-container $ rosbag record /![MY_ROBOT]/camera_node/image/compressed /![MY_ROBOT]/wheels_driver_node/wheels_cmd
   
 Record the bag file for 30 seconds and then stop the recording using `Ctrl+C`. Then stop the demo as well.
 
