@@ -24,7 +24,7 @@ Using the following concepts
 - [Creating a basic Duckietown ROS Publisher](#ros-pub-duckiebot)
 - [Creating a basic Duckietown ROS Subscriber](#ros-sub-duckiebot)
 - [Launch Files](#ros-launch)
-- [Namespaces and remapping](#ros-remap)
+- [Namespaces and remapping](#ros-namespace-remap)
 - [Multi agent communication](#ros-multi-agent)
 - [Recording bag files](#rosbag-record)
 

@@ -432,25 +432,21 @@ Let's see how we can do this. First of all, we need to make sure that all the to
 
 Edit the `./packages/my_package/launch/multiple_nodes.launch` to look like this:
 
-<pre trim="1" class="html"> 
-<code trim="1" class="html">
-&lt;launch&gt;
+<pre trim="1" class="html"> <code trim="1" class="html">&lt;launch&gt;
 
-  &lt;group ns="$(arg veh)"&gt;  
+  &lt;group ns="&#36;(arg veh)"&gt;  
   
     &lt;node pkg="my_package" type="my_node.py" name="my_node" output="screen"/&gt;
     &lt;node pkg="my_package" type="my_node_subscriber.py" name="my_node_subscriber"  output="screen"/&gt;
 
   &lt;/group&gt;
    
-&lt;/launch&gt;
-</code>
-</pre>
+&lt;/launch&gt;</code></pre>
 
 Then edit the roslaunch command in `./launch.sh` as follows:
-```bash
-roslaunch my_package multiple_nodes.launch veh:=$VEHICLE_NAME
-```
+
+<pre trim="1" class="html"> <code trim="1" class="html">roslaunch my_package multiple_nodes.launch veh:=&#36;VEHICLE_NAME
+</code></pre>
 
 Build and run the image. Once again run `rqt_graph` like above. You should see something like below.(TODO: add image) What changed?
 
@@ -464,7 +460,7 @@ Edit the `./packages/my_package/launch/multiple_nodes.launch` file to have two p
 <code trim="1" class="html">
 &lt;launch&gt;
 
-  &lt;group ns="$(arg veh)"&gt;  
+  &lt;group ns="&#36;(arg veh)"&gt;  
   
     &lt;node pkg="my_package" type="my_node.py" name="my_node_1" output="screen"/&gt;
     &lt;node pkg="my_package" type="my_node.py" name="my_node_2" output="screen"/&gt;
@@ -505,17 +501,17 @@ Edit the `./packages/my_package/launch/multiple_nodes.launch` file to contain th
 <code trim="1" class="html">
 &lt;launch&gt;
 
-  &lt;group ns="$(arg veh)"&gt;  
+  &lt;group ns="&#36;(arg veh)"&gt;  
   
     &lt;node pkg="my_package" type="my_node.py" name="my_node_1" output="screen"/&gt;
     &lt;node pkg="my_package" type="my_node.py" name="my_node_2" output="screen"/&gt;
 
     &lt;node pkg="my_package" type="my_node_subscriber.py" name="my_node_subscriber_1"  output="screen"&gt;
-        &lt;remap from="~/chatter" to="/$(arg veh)/my_node_1/chatter"/&gt;
+        &lt;remap from="~/chatter" to="/&#36;(arg veh)/my_node_1/chatter"/&gt;
     &lt;/node&gt;
     
     &lt;node pkg="my_package" type="my_node_subscriber.py" name="my_node_subscriber_2"  output="screen"&gt;
-        &lt;remap from="~/chatter" to="/$(arg veh)/my_node_2/chatter"/&gt;
+        &lt;remap from="~/chatter" to="/&#36;(arg veh)/my_node_2/chatter"/&gt;
     &lt;/node&gt;
 
    &lt;/group&gt;
@@ -531,7 +527,7 @@ Now, replace
 <pre trim="1" class="html">
 <code trim="1" class="html">
     &lt;node pkg="my_package" type="my_node_subscriber.py" name="my_node_subscriber_1"  output="screen"&gt;
-        &lt;remap from="~/chatter" to="/$(arg veh)/my_node_1/chatter"/&gt;
+        &lt;remap from="~/chatter" to="/&#36;(arg veh)/my_node_1/chatter"/&gt;
     &lt;/node&gt;
 </code>
 </pre>
