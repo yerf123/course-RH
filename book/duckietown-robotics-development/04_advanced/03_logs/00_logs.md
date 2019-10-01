@@ -77,7 +77,7 @@ finally:
 ## Exercises {#rosbag-exercise}
 
 
-#### Record bag file {#exercise:rosbag-record}
+#### Record bag file {#exercise:rosbag-record-bag}
 
 Using the following concepts, 
 
