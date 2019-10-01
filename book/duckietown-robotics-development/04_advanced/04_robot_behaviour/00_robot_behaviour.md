@@ -40,4 +40,4 @@ do the following:
 
 - Record a bag file containing the original and debug images. 
 
-<minitoc/>
+<end/>
