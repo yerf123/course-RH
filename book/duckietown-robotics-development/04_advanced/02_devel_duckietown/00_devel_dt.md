@@ -105,7 +105,6 @@ A ROS package is simply a directory containing two special files, `package.xml` 
 Create the file `package.xml` inside `my_package` using your favorite text editor and place/adjust the following content inside it:
 
 ```
-<?xml version="1.0"?>
 <package>
   <name>my_package</name>
   <version>0.1.0</version>
