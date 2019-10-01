@@ -92,7 +92,7 @@ Run the [lane following demo](+opmanual_duckiebot#demo-lane-following). Once you
 
     laptop-container $ rosbag record /![MY_ROBOT]/camera_node/image/compressed /![MY_ROBOT]/wheels_driver_node/wheels_cmd
   
-Record the bag file for 30 seconds and then stop the recording using `Ctrl+C`. Use the `rosbag info ![filename].bag` command to get some information about the bag file. If the bag does not have messages from both the topics, check if you ran the container correctly.
+Record the bag file for 30 seconds and then stop the recording using <kbd>Ctrl</kbd>+<kbd>C</kbd>. Use the `rosbag info ![filename].bag` command to get some information about the bag file. If the bag does not have messages from both the topics, check if you ran the container correctly.
 
 Stop the demo before proceeding.
 
@@ -168,7 +168,7 @@ Create a docker container exactly like you did in the [first exercise of this se
 
 In a new terminal, use `start_gui_tools` and run `rqt_image_view` inside it. Can you see `/new_image/compressed`? 
 
-Stop the `rosbag play` using `CTRL+C` and now run the following command inside the same container:
+Stop the `rosbag play` using <kbd>CTRL</kbd>+<kbd>C</kbd> and now run the following command inside the same container:
 ```
     laptop-container $ rosbag play ![processed_bag].bag --loop 
 ```
