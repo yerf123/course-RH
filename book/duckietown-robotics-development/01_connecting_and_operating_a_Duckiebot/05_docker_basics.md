@@ -132,7 +132,7 @@ An alternative syntax is
 
 These commands list all running containers.
 
-Now you can go back to your `ubuntu` container and type `exit`. This will bring you back to you host shell and will stop the container. If you again run the `docker ps` command you will see nothing running. So does this mean that this container and all changes you might have made in it are gone? What about all these precious changes you made in it? Are they forever lost into the entropy abyss of electric noise in your computer's memory? Not at all, `docker ps` and `docker container list` only list the currently running containers.
+Now you can go back to your `ubuntu` container and type `exit`. This will bring you back to your host shell and will stop the container. If you again run the `docker ps` command you will see nothing running. So does this mean that this container and all changes you might have made in it are gone? What about all these precious changes you made in it? Are they forever lost into the entropy abyss of electric noise in your computer's memory? Not at all, `docker ps` and `docker container list` only list the currently running containers.
 
 You can see all containers, including the stopped ones with:
 
