@@ -122,7 +122,7 @@ You are now in your new `ubuntu` container! Try to play around, you can try to u
 
 If you are sure about the difference between the host and the container, you might want to see what happens when you do `rm -rf /` __IN THE CONTAINER__. Do that extremely carefully because that wipes out all of the root of a system. You do not want to run this on your host. By running the above command in a Docker container you will destroy the OS inside the container - but you can just exit and start another one. If instead you have confused host and container, at this point you probably need to re-install your OS.
 
-You can check which containers you are running using the docker `ps` command - analogous to the Linux `ps` command. Open a new terminal window (don'’'t close the other one just yet) and type:
+You can check which containers you are running using the docker `ps` command - analogous to the Linux `ps` command. Open a new terminal window (do not close the other one just yet) and type:
 
     laptop $ docker ps
 
@@ -132,7 +132,7 @@ An alternative syntax is
 
 These commands list all running containers.
 
-Now you can go back to your `ubuntu` container and type `exit`. This will bring you back to you host shell and will stop the container. If you again run the `docker ps` command you will see nothing running. So does this mean that this container and all changes you might have made in it are gone? What about all these precious changes you made in it? Are they forever lost into the entropy abyss of electric noise in your computer's memory? Not at all, `docker ps` and `docker container list` only list the currently running containers.
+Now you can go back to your `ubuntu` container and type `exit`. This will bring you back to your host shell and will stop the container. If you again run the `docker ps` command you will see nothing running. So does this mean that this container and all changes you might have made in it are gone? What about all these precious changes you made in it? Are they forever lost into the entropy abyss of electric noise in your computer's memory? Not at all, `docker ps` and `docker container list` only list the currently running containers.
 
 You can see all containers, including the stopped ones with:
 
