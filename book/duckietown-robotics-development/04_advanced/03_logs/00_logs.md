@@ -92,6 +92,8 @@ Run the [lane following demo](+opmanual_duckiebot#demo-lane-following). Once you
   
 Record the bag file for 30 seconds and then stop the recording using `Ctrl+C`. Then stop the demo as well.
 
+</end>
+
 #### Analyze bag files {#exercise:rosbag-stats}
 
 Download [this](https://www.dropbox.com/s/11t9p8efzjy1az9/example_rosbag_H3.bag?dl=1) bag file. Using the following concepts,
@@ -131,6 +133,8 @@ Note: Make sure to mount the bag file to the Docker container, instead of copyin
 
 Run the same analysis with the bag file you recorded in the previous exercise.
 
+</end>
+
 #### Processing bag files {#exercise:rosbag-process}
 
 Using the following concepts, 
@@ -140,3 +144,5 @@ Using the following concepts,
 
 
 create a Docker image which can process a bag file. For every image message in the bag file, extract the timestamp from the message, draw it on top of the image, and write it to a new bag file. Use the bag file you recorded for this exercise. The new bag file should be generated in the mounted folder.
+
+</end>
