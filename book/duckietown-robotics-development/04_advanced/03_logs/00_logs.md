@@ -2,7 +2,7 @@
 
 # Working with logs {#ros-logs status=ready}
 
-Robotics is innately married to hardware. However, when we develop and test our robots' software, it is often the case that we don't want to have to waste time to test on hardware after every small change. With bigger and more powerful robots, it might be the case that a softwre can result in a robot actuation that breaks it or even endanger human life! But if one can evaluate how a robot or a piece of code would behave before deploying on the actual platform then quite some headaches can be prevented. That is why working in simulation and from logs is so important in robotics. In this section you will learn how to work with logs in ROS.
+Robotics is innately married to hardware. However, when we develop and test our robots' software, it is often the case that we don't want to have to waste time to test on hardware after every small change. With bigger and more powerful robots, it might be the case that a software can result in a robot actuation that breaks it or even endanger human life! But if one can evaluate how a robot or a piece of code would behave before deploying on the actual platform then quite some headaches can be prevented. That is why working in simulation and from logs is so important in robotics. In this section you will learn how to work with logs in ROS.
 
 
 <div class='requirements' markdown='1'>
@@ -76,66 +76,98 @@ finally:
 
 ## Exercises {#rosbag-exercise}
 
+All containers in the exercises below should be run on your laptop, i.e. without `-H ![MY_ROBOT].local`.
 
-#### Record bag file {#exercise:rosbag-record}
+
+#### Record bag file {#exercise:rosbag-record-bag}
 
 Using the following concepts, 
 
 - [Getting data in and out of your container](#docker-poweruser)
 - [Communication between laptop and Duckiebot](#ros-multi-agent)
 
-create a Docker container with a folder on your laptop mounted on the container. However, this time, instead of exporting the `ROS_MASTER_URI` and `ROS_IP` after entering the container, do it with the `docker run` command. You already know it from [here](#exercise:ex-docker-envvar).
+create a Docker container on your laptop with a folder mounted on the container. You can use the image `duckietown/dt-ros-commons:daffy-amd64`. This time, however, instead of exporting the `ROS_MASTER_URI` and `ROS_IP` after entering the container, do it directly with the `docker run` command. You already know it from [here](#exercise:ex-docker-envvar).
 
-Run the [lane following demo](+opmanual_duckiebot#demo-lane-following). Once your Duckiebot starts moving, record the camera images and the wheel commands from your duckiebot using rosbag. Navigate to the mounted folder using the `cd` command and then run (TODO: Check command)
+Run the [lane following demo](+opmanual_duckiebot#demo-lane-following). Once your Duckiebot starts moving, record the camera images and the wheel commands from your Duckiebot using `rosbag` in the container you just created (the one with the folder mounted). To do that navigate to the mounted folder using the `cd` command and then run
 
-    laptop $ rosbag record /![MY_ROBOT]/camera_node/image/compressed /![MY_ROBOT]/wheels_driver_node/wheels_cmd
+    laptop-container $ rosbag record /![MY_ROBOT]/camera_node/image/compressed /![MY_ROBOT]/wheels_driver_node/wheels_cmd
   
-Record the bag file for 30 seconds and then stop the recording using `Ctrl+C`. Then stop the demo as well.
+Record the bag file for 30 seconds and then stop the recording using <kbd>Ctrl</kbd>+<kbd>C</kbd>. Use the `rosbag info ![filename].bag` command to get some information about the bag file. If the bag does not have messages from both the topics, check if you ran the container correctly.
+
+Stop the demo before proceeding.
+
+<end/>
 
 #### Analyze bag files {#exercise:rosbag-stats}
 
-Download [this](https://www.dropbox.com/s/11t9p8efzjy1az9/example_rosbag_H3.bag?dl=1) bag file. Using the following concepts,
+Download [this](https://www.dropbox.com/s/11t9p8efzjy1az9/example_rosbag_H3.bag?dl=1) bag file. 
+
+Start by creating a new repository from the template, like in the [previous section](#basic-structure). Inside, the `./packages` folder, create a python file for this exercise. You do not need to create a ros package for this, however, you can still choose to do so. Since reading a bag file does not require ROS, you can do this without setting the necessary environment variables. Using the following concepts,
 
 - [Getting data in and out of your container](#docker-poweruser)
 - [Creating a basic Duckietown ROS enabled Docker image](#basic-structure)
 
-create a Docker image which can analyze bag files and produce the following output. The min, max, average, and median values printed are statistics of the time difference between two consecutive messages. 
+create a Docker image which can analyze bag files and produce an output similar to the one shown below. The min, max, average, and median values printed are statistics of the time difference between two consecutive messages. The `XXX` and `X.XX` are 
 
 ```
 /tesla/camera_node/camera_info:
-  num_messages: 653
+  num_messages: XXX
   period:
-    min: 0.01
-    max: 0.05
-    average: 0.03
-    median: 0.03
+    min: X.XX
+    max: X.XX
+    average: X.XX
+    median: X.XX
 
 /tesla/line_detector_node/segment_list:
-  num_messages: 198
+  num_messages: XXX
   period:
-    min: 0.08
-    max: 0.17
-    average: 0.11
-    median: 0.1
+    min: X.XX
+    max: X.XX
+    average: X.XX
+    median: X.XX
 
 /tesla/wheels_driver_node/wheels_cmd:
-  num_messages: 74
+  num_messages: XXX
   period:
-    min: 0.02
-    max: 4.16
-    average: 0.26
-    median: 0.11
+    min: X.XX
+    max: X.XX
+    average: X.XX
+    median: X.XX
 ``` 
-Note: Make sure to mount the bag file to the Docker container, instead of copying it. 
+
+Note: Make sure to mount the folder containing the bag file to the Docker container, instead of copying it. 
 
 Run the same analysis with the bag file you recorded in the previous exercise.
 
+<end/>
+
 #### Processing bag files {#exercise:rosbag-process}
 
-Using the following concepts, 
+Use the bag file which you recorded earlier for this exercise. Using the following concepts, 
 
 - [Getting data in and out of your container](#docker-poweruser)
 - [Creating a basic Duckietown ROS enabled Docker image](#basic-structure)
+- [Converting between ROS Images and OpenCV Images](http://wiki.ros.org/cv_bridge/Tutorials/ConvertingBetweenROSImagesAndOpenCVImagesPython)
 
+create a Docker image which can process a bag file. Essentially, you will extract some data from a bag file, process it, and write the results to a new bag file. Once again, create a new repository, and the necessary python file for this exercise inside the `./packages` folder. For the image message in the bag file, do the following:
 
-create a Docker image which can process a bag file. For every image message in the bag file, extract the timestamp from the message, draw it on top of the image, and write it to a new bag file. Use the bag file you recorded for this exercise. The new bag file should be generated in the mounted folder.
+- Extract the timestamp from the message
+- Extract the image data from the message
+- [Draw](https://docs.opencv.org/2.4/modules/core/doc/drawing_functions.html#puttext) the timestamp on top of the image
+- Write the new image to the new bag file, with the same topic name, same timestamp, and the same [message type](http://docs.ros.org/kinetic/api/sensor_msgs/html/msg/CompressedImage.html) as the original message
+
+The new bag file should be generated in the mounted folder.
+
+To verify your results, create a docker container exactly like you did in the [first exercise of this section](#exercise:rosbag-record-bag). Make sure you place your processed bag file in the folder being mounted. Run the following command:
+
+    laptop-container $ rosbag play ![processed_bag].bag --loop /![MY_ROBOT]/camera_node/image/compressed:=/new_image/compressed
+
+In a new terminal, use `start_gui_tools` and run `rqt_image_view` inside it. Can you see `/new_image/compressed`? 
+
+Stop the `rosbag play` using <kbd>CTRL</kbd>+<kbd>C</kbd> and now run the following command inside the same container:
+
+    laptop-container $ rosbag play ![processed_bag].bag --loop 
+
+Again, use `start_gui_tools` but this time check `/![MY_ROBOT]/camera_node/image/compressed`. What's going on? Why? What does the last part of the first command do?
+
+<end/>
