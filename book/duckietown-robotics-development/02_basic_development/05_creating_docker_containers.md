@@ -223,7 +223,8 @@ Then push it to DockerHub:
 
     laptop $ docker -H ![DUCKIEBOT_NAME].local push duckquackermann/colordetector
 
-You will probably have to first connect your local client with your DockerHub account. Just run `docker -H ![DUCKIEBOT_NAME].local login` to do this. Now your code can be executed on any single Duckiebot around the world with a single command: 
+Note: You will probably have to first connect your Duckiebot's Docker client with your DockerHub account. So first open an [SSH connection](#exercise:ex-ssh) to the robot and then run `docker login` in it. You will be prompted to provide your DockerHub username and password. If you want to be able to push images directly from your laptop, you should do the same there.
 
+After you've pushed your image to DockerHub your code can be executed on any single Duckiebot around the world with a single command: 
 
     $ docker -H ![DUCKIEBOT_NAME].local run -it --privileged duckquackermann/colordetector
