@@ -86,7 +86,7 @@ Using the following concepts,
 - [Getting data in and out of your container](#docker-poweruser)
 - [Communication between laptop and Duckiebot](#ros-multi-agent)
 
-create a Docker container on your laptop with a folder mounted on the container. This time, however, instead of exporting the `ROS_MASTER_URI` and `ROS_IP` after entering the container, do it directly with the `docker run` command. You already know it from [here](#exercise:ex-docker-envvar).
+create a Docker container on your laptop with a folder mounted on the container. You can use the image `duckietown/dt-ros-commons:daffy-amd64`. This time, however, instead of exporting the `ROS_MASTER_URI` and `ROS_IP` after entering the container, do it directly with the `docker run` command. You already know it from [here](#exercise:ex-docker-envvar).
 
 Run the [lane following demo](+opmanual_duckiebot#demo-lane-following). Once your Duckiebot starts moving, record the camera images and the wheel commands from your Duckiebot using `rosbag` in the container you just created (the one with the folder mounted). To do that navigate to the mounted folder using the `cd` command and then run
 
@@ -107,32 +107,32 @@ Start by creating a new repository from the template, like in the [previous sect
 - [Getting data in and out of your container](#docker-poweruser)
 - [Creating a basic Duckietown ROS enabled Docker image](#basic-structure)
 
-create a Docker image which can analyze bag files and produce the following output. The min, max, average, and median values printed are statistics of the time difference between two consecutive messages. 
+create a Docker image which can analyze bag files and produce an output similar to the one shown below. The min, max, average, and median values printed are statistics of the time difference between two consecutive messages. The `XXX` and `X.XX` are 
 
 ```
 /tesla/camera_node/camera_info:
-  num_messages: 653
+  num_messages: XXX
   period:
-    min: 0.01
-    max: 0.05
-    average: 0.03
-    median: 0.03
+    min: X.XX
+    max: X.XX
+    average: X.XX
+    median: X.XX
 
 /tesla/line_detector_node/segment_list:
-  num_messages: 198
+  num_messages: XXX
   period:
-    min: 0.08
-    max: 0.17
-    average: 0.11
-    median: 0.1
+    min: X.XX
+    max: X.XX
+    average: X.XX
+    median: X.XX
 
 /tesla/wheels_driver_node/wheels_cmd:
-  num_messages: 74
+  num_messages: XXX
   period:
-    min: 0.02
-    max: 4.16
-    average: 0.26
-    median: 0.11
+    min: X.XX
+    max: X.XX
+    average: X.XX
+    median: X.XX
 ``` 
 
 Note: Make sure to mount the folder containing the bag file to the Docker container, instead of copying it. 
@@ -147,14 +147,14 @@ Use the bag file which you recorded earlier for this exercise. Using the followi
 
 - [Getting data in and out of your container](#docker-poweruser)
 - [Creating a basic Duckietown ROS enabled Docker image](#basic-structure)
-
+- [Converting between ROS Images and OpenCV Images](http://wiki.ros.org/cv_bridge/Tutorials/ConvertingBetweenROSImagesAndOpenCVImagesPython)
 
 create a Docker image which can process a bag file. Essentially, you will extract some data from a bag file, process it, and write the results to a new bag file. Once again, create a new repository, and the necessary python file for this exercise inside the `./packages` folder. For the image message in the bag file, do the following:
 
 - Extract the timestamp from the message
 - Extract the image data from the message
-- Draw the timestamp on top of the image
-- Write the new image to the new bag file, with the same topic name, same timestamp, and the same message type as the original message
+- [Draw](https://docs.opencv.org/2.4/modules/core/doc/drawing_functions.html#puttext) the timestamp on top of the image
+- Write the new image to the new bag file, with the same topic name, same timestamp, and the same [message type](http://docs.ros.org/kinetic/api/sensor_msgs/html/msg/CompressedImage.html) as the original message
 
 The new bag file should be generated in the mounted folder.
 

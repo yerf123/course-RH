@@ -55,9 +55,7 @@ The repository contains already everything you need to create a Duckietown-compl
 
 
 <pre trim="1" class="html">
-<code trim="1" class="html">
-ARG REPO_NAME="&lt;REPO_NAME_HERE&gt;"
-</code>
+<code trim="1" class="html">ARG REPO_NAME="&lt;REPO_NAME_HERE&gt;"</code>
 </pre>
 
 to
@@ -376,15 +374,13 @@ and then inside it, run
     
     laptop $ rqt_graph
 
-You should see this (TODO: add image)
-
 Have you seen a graph like this before? 
 
 ## Launch files {#ros-launch status-ready} 
 
 You edited the `launch.sh` file to remove <pre trim="1" class="html"> <code trim="1" class="html">roscore &#38;</code> </pre> when it was already running. What if there was something which starts a new `rosmaster` when it doesn't exist? 
 
-You also added multiple `rosrun` commands to run the publisher and subscriber. Now imagine writing similar shell scripts for programming multiple robot behaviors. Some basic nodes such as a camera or a motor driver will be running in all operation scenarios of your Duckiebot, but other nodes will be added/removed to run specific behaviors (e.g. lane following with or without obstacle avoidance). You can think of this as an hierarchy where certain branches are activated optionally. (TODO: Awesome diagram) 
+You also added multiple `rosrun` commands to run the publisher and subscriber. Now imagine writing similar shell scripts for programming multiple robot behaviors. Some basic nodes such as a camera or a motor driver will be running in all operation scenarios of your Duckiebot, but other nodes will be added/removed to run specific behaviors (e.g. lane following with or without obstacle avoidance). You can think of this as an hierarchy where certain branches are activated optionally. 
 
 You can obviously write a "master" `launch.sh` which executes other shell scripts for heirarchies. How do you pass parameters between these scripts? Where do you store all of them? What if you want to use packages created by other people?
 
@@ -448,7 +444,7 @@ Then edit the roslaunch command in `./launch.sh` as follows:
 <pre trim="1" class="html"> <code trim="1" class="html">roslaunch my_package multiple_nodes.launch veh:=&#36;VEHICLE_NAME
 </code></pre>
 
-Build and run the image. Once again run `rqt_graph` like above. You should see something like below.(TODO: add image) What changed?
+Build and run the image. Once again run `rqt_graph` like above. What changed?
 
 As a next step, we need to ensure that we can launch multiple instances of the same node with different names, and publishing topics corresponding to those names. For example, running two camera nodes with names `camera_left` and `camera_right` respectively, publishing topics `/my_robot/camera_left/image` and `/my_robot/camera_right/image`.
 
@@ -476,17 +472,17 @@ Edit the `./packages/my_package/launch/multiple_nodes.launch` file to have two p
 Check `rqt_graph`. All communications are happening on one topic. You still cannot differentiate between topics being published by multiple nodes. Turns out doing that is very simple. Open the file `./packages/my_package/src/my_node.py` and edit the declaration of the publisher from
 
 ```python
-        ...
+...
         self.pub = rospy.Publisher('chatter', String, queue_size=10)
-        ...
+...
 ```
 
 to 
 
 ```python
-        ...
+...
         self.pub = rospy.Publisher('~chatter', String, queue_size=10)
-        ...
+...
 ```
 
 All we did was add a tilde(`~`) sign in the beginning of the topic. Names that start with a `~` in ROS are private names. They convert the node's name into a namespace. Note that since the nodes are already being launched inside the namespace of the robot, the node's namespace would be nested inside it. Read more about private namespaces [here](http://wiki.ros.org/Names)
@@ -526,9 +522,10 @@ Now, replace
 
 <pre trim="1" class="html">
 <code trim="1" class="html">
-    &lt;node pkg="my_package" type="my_node_subscriber.py" name="my_node_subscriber_1"  output="screen"&gt;
-        &lt;remap from="~/chatter" to="/&#36;(arg veh)/my_node_1/chatter"/&gt;
-    &lt;/node&gt;
+
+&lt;node pkg="my_package" type="my_node_subscriber.py" name="my_node_subscriber_1"  output="screen"&gt;
+    &lt;remap from="~/chatter" to="/&#36;(arg veh)/my_node_1/chatter"/&gt;
+&lt;/node&gt;
 </code>
 </pre>
 
@@ -536,9 +533,10 @@ with
 
 <pre trim="1" class="html">
 <code trim="1" class="html">
-    &lt;node pkg="my_package" type="my_node_subscriber.py" name="my_node_subscriber_1"  output="screen"&gt;
-        &lt;remap from="~/chatter" to="my_node_1/chatter"/&gt;
-    &lt;/node&gt;
+
+&lt;node pkg="my_package" type="my_node_subscriber.py" name="my_node_subscriber_1"  output="screen"&gt;
+    &lt;remap from="~/chatter" to="my_node_1/chatter"/&gt;
+&lt;/node&gt;
 
 </code>
 </pre>
@@ -549,9 +547,10 @@ How about if you replace it with this:
 
 <pre trim="1" class="html">
 <code trim="1" class="html">
-    &lt;node pkg="my_package" type="my_node_subscriber.py" name="my_node_subscriber_1"  output="screen"&gt;
-        &lt;remap from="~/chatter" to="/my_node_1/chatter"/&gt;
-    &lt;/node&gt;
+
+&lt;node pkg="my_package" type="my_node_subscriber.py" name="my_node_subscriber_1"  output="screen"&gt;
+    &lt;remap from="~/chatter" to="/my_node_1/chatter"/&gt;
+&lt;/node&gt;
 </code>
 </pre>
 
@@ -559,8 +558,9 @@ How about this?
 
 <pre trim="1" class="html">
 <code trim="1" class="html">
-    &lt;remap from="my_node_subscriber_1/chatter" to="my_node_1/chatter"/&gt;
-    &lt;node pkg="my_package" type="my_node_subscriber.py" name="my_node_subscriber_1"  output="screen"/&gt;
+
+&lt;remap from="my_node_subscriber_1/chatter" to="my_node_1/chatter"/&gt;
+&lt;node pkg="my_package" type="my_node_subscriber.py" name="my_node_subscriber_1"  output="screen"/&gt;
 </code>
 </pre>
 
@@ -568,8 +568,9 @@ Or this?
 
 <pre trim="1" class="html">
 <code trim="1" class="html">
-    &lt;remap from="~my_node_subscriber_1/chatter" to="~my_node_1/chatter"/&gt;
-    &lt;node pkg="my_package" type="my_node_subscriber.py" name="my_node_subscriber_1"  output="screen"/&gt;
+
+&lt;remap from="~my_node_subscriber_1/chatter" to="~my_node_1/chatter"/&gt;
+&lt;node pkg="my_package" type="my_node_subscriber.py" name="my_node_subscriber_1"  output="screen"/&gt;
 </code>
 </pre>
 
@@ -598,7 +599,7 @@ Right now, you are inside a ROS-enabled container which is connected to the `ros
     laptop $ export ROS_MASTER_URI=http://![MY_ROBOT_IP]:11311/
     laptop $ export ROS_IP=http://![MY_IP]:11311/
 
-Replace `![MY_ROBOT_IP]` and `![MY_IP]` from the IP addresses extracted above, in that order. 
+Replace `![MY_ROBOT_IP]` and `![MY_IP]` from the IP addresses extracted above, in that order. More information about these environment variables [here](wiki.ros.org/ROS/EnvironmentVariables).
 
 Now, run:
  
