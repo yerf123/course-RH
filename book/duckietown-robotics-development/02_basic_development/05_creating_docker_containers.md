@@ -226,4 +226,4 @@ Then push it to DockerHub:
 You will probably have to first connect your local client with your DockerHub account. Just run `docker -H ![DUCKIEBOT_NAME].local login` to do this. Now your code can be executed on any single Duckiebot around the world with a single command: 
 
 
-    $ docker -H DUCKIEBOT_NAME.local run -it --privileged duckquackermann/colordetector
+    $ docker -H ![DUCKIEBOT_NAME].local run -it --privileged duckquackermann/colordetector
