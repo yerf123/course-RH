@@ -38,7 +38,7 @@ do the following:
 
 - In the second one, add the code to subscribe to that topic and extract color. Using concepts from [roslaunch](#ros-launch), create two nodes in your `.launch` file. Note that you are not allowed to have different Python files for each node. The first node detects the color red and the second detects yellow. You should use [params](http://wiki.ros.org/roslaunch/XML/param) within your `node` tag to let your detector know whether it is supposed to detect red/yellow. These nodes will run on your laptop. Once again, pass the required environment variables to connect your laptop to the rosmaster of your duckiebot using `docker run`.
 
-- You should publish some debug images from within the color detection node. These debug images should have rectangles drawn in the region where the colors are detected. 
+- You should publish some debug images from within the color detection node. These debug images should have rectangles drawn in the region where the colors are detected. Note that we are not looking for perfect color detectors, as long as they produce reasonable output. You can draw multiple rectangles in the image if the multiple regions in the image have the requred color.
 
 - Record a bag file containing the original and debug images. 
 
