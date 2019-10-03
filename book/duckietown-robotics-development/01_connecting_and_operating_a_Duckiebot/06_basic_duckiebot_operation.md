@@ -31,9 +31,8 @@ You can even see what the Duckiebot is seeing Through the dashboard. You can fol
 
 The dashboard is really useful for quick debugging and for moving the Duckiebot. We suggest you use it every time you have doubts about the camera nor working or the motors not being plugged in the right way.
 
-But this interface has its limits, as it hides everything that is actually running on the duckiebot. To better understand the duckiebot, let’s take a look at what is under the hood: we will use a tool called _portainer_ to do so.
 
-## Remote connection with a browser and an interface {status=ready}
+But this interface has its limits, as it hides everything that is actually running on the duckiebot. To better understand the duckiebot, let’s take a look at what is under the hood : we will use portainer.
 
 To manage and use containers, the command line interface is not so easy to use. But there exist a tool that create a nice interface to manage containers: [_Portainer_](https://www.portainer.io/). Portainer is itself a container that runs on a device. Let's learn how to use it.
 
