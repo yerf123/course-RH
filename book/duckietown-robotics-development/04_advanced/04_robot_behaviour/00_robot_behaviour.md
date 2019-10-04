@@ -49,7 +49,7 @@ do the following:
 A sample debug image stream for the yellow color detector is shown here:
 <figure id="example-embed">
     <figcaption>Sample Yellow Color Detector</figcaption>
-    <dtvideo src="vimeo:364079106"/>
+    <dtvideo src="vimeo:364266236"/>
 </figure>
 
 <end/>
