@@ -136,6 +136,7 @@ create a Docker image which can analyze bag files and produce an output similar 
     median: N.NN
   ``` 
 
+
 Note: Make sure to mount the folder containing the bag file to the Docker container, instead of copying it. 
 
 Run the same analysis with the bag file you recorded in the previous exercise.
