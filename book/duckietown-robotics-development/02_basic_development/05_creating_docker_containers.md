@@ -198,7 +198,7 @@ with picamera.PiCamera() as camera:
 
 Once you have your `color_detector.py` file ready to be tested, you can build it directly on your bot by running:
  
-    $ docker -H ![DUCKIEBOT_NAME].local build -t colordetector
+    $ docker -H ![DUCKIEBOT_NAME].local build -t colordetector .
     
 Do you remember what `-H` does? It takes the context (the folder in which you are) and ships it to the device specified by `-H` and build the container there. Once the container is built (typically it takes more time the first time), you can test it with:
        
